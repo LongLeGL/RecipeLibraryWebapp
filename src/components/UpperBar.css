@@ -1,0 +1,9 @@
+.UpperBar {
+    width: 100vw;
+    height: 8vh;
+    background-color: white;
+    display: flex;
+    border-width: 1px;
+    border-color: var(--border_gray);
+    border-bottom-style: solid;
+}

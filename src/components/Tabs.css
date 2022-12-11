@@ -1,0 +1,44 @@
+.tab-list-item {
+    width: 11vw;
+    padding: 0.5rem 0.65rem;
+    margin: 0.5em 0.3em;
+    border-radius: 4px;
+    align-items: center;
+    display: flex;
+    gap: 0.5em;
+}
+  
+.tab-list-active {
+    background-color: var(--blue);
+    border: solid var(--blue);
+    border-width: 1px 1px 1px 1px;
+}
+
+a {
+    color: var(--text_gray);
+    text-decoration: none;
+    font-size: 0.85em;
+}
+
+a .tab-list-active {
+    color: white;
+}
+
+.LogoutBtn {
+    display: flex;
+    gap: 0.5em;
+}
+
+.LogoutBtn img {
+    width: 1.3em;
+}
+
+.Separator{
+    width: 13.65vw;
+    height: 2px;
+    background-color: var(--border_gray);
+}
+
+.tabs img {
+    width: 1.3em;
+}

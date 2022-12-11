@@ -1,0 +1,44 @@
+.SideNavBar {
+    height: 100vh;
+    width: 13.6vw;
+    margin-right: 0;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    border: 2px;
+    border-color: var(--border_gray);
+    border-right-style: solid;
+}
+
+.AppName {
+    width: fit-content;
+    margin: 1em auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3em;
+}
+
+.AppName img {
+    width: 2em;
+}
+.AppName div {
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+.CreateTaskBtn {
+    margin: 0 auto;
+    margin-bottom: 2em;
+}
+
+.CreateTaskBtn button {
+    padding: 0.5em 1em;
+    border-radius: 4px;
+}
+
+.LogoutBtn {
+    margin-left: 1.1em;
+}
