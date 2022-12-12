@@ -56,3 +56,12 @@ form {
     border-radius: 6px;
     color: white;
 }
+
+.LoginErrMsg{
+    font-size: 1em;
+    background-color: crimson;
+    width: fit-content;
+    margin: auto;
+    margin-top: 2em;
+    padding: 0.5em 1em;
+}

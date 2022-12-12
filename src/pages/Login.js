@@ -1,16 +1,23 @@
 import './Login.css';
 import './global.css'
 import React, {useState} from 'react';
-import {Link} from "react-router-dom";
 
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errMsg, seterrMsg] = useState("");
 
   function handleSubmit(e) {
+    seterrMsg('');
     e.preventDefault();
     console.log(email, password);
+    if (!email) seterrMsg("Username or Email required !");
+    else if (!password) seterrMsg("Password required !");
+
+    if (!email && !password)  //database validation failed
+      seterrMsg("Wrong username or password !");
+    
     window.location.href = '/';
   }
 
@@ -31,8 +38,9 @@ function Login() {
           <input type="password" name="password" onChange={e => setPassword(e.target.value)} />
         </div>
         <input type='submit' value='Login' onClick={handleSubmit} />
-
       </form>
+
+      <div className= {!errMsg ? 'LoginErrMsg.hidden' : 'LoginErrMsg'}>{errMsg}</div>
     </div>
   );
 }

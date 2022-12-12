@@ -3,7 +3,30 @@
     height: 8vh;
     background-color: white;
     display: flex;
+    justify-content: space-between;
     border-width: 1px;
     border-color: var(--border_gray);
     border-bottom-style: solid;
+}
+
+.UpperbarHomeButton{
+    height: 6.6vh;
+    width: 6.6vh;
+    border: 2px var(--border_gray) solid;
+    padding: 3px 3px;
+}
+.UpperbarHomeButton img{
+    width: 2.1em;
+    margin: 4px;
+}
+
+.UpperBarTitle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8em;
+    gap: 1em;
+}
+.UpperBarTitle img{
+    width: 3em;
 }
