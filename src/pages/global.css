@@ -19,3 +19,24 @@ button {
     padding: 0.4em 1em;
     cursor: pointer;
 }
+tag {
+    background-color: rgb(43, 107, 226);
+    margin-right: 10px;
+    
+    color: white;
+    border-radius: 6px;
+    border-style: none;
+    padding: 0.3em 0.8em;
+    cursor: pointer;
+    
+}
+recipeTitle {
+    background-color: white;
+    margin-bottom: 10px;
+    
+    color: black;
+    border-radius: 6px;
+    border-style: none;
+    padding: 0.3em 0.8em;
+    cursor: pointer;
+}
