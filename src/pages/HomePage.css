@@ -10,7 +10,7 @@
     background-color: white;
     
     width: 40vw;
-    margin: auto;
+    margin-left: 442px;
     margin-top: 50px;
     margin-bottom: 20px;
     border-color: var(--border_gray);
@@ -41,7 +41,7 @@
     background-color: white;
     
     width: 34vw;
-    margin-left: 455px;
+    margin-left: 442px;
     margin-bottom: 20px;
     border-color: var(--border_gray);
     border-radius: 1px;
@@ -69,7 +69,7 @@
     border-radius: 1px;
     border-style: solid;
     outline:none;
-    width: 30.5vw;
+    width: 30vw;
     font-weight: 200;
 }
 #Container {
@@ -81,7 +81,7 @@
 }
 
 .RecipeOfTheDay {
-    margin-left: 29.5vw;
+    margin-left: 442px;
 }
 .RecipeOfTheDay #RecipeOfTheDay-header{
     font-size: 20px;
@@ -93,7 +93,7 @@
 .RecipeOfTheDay #RecipeOfTheDay-panel{
     background-color: white;
     
-    width: 33.5vw;
+    width: 33vw;
     
     margin-bottom: 20px;    
     border-color: var(--border_gray);
