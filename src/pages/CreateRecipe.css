@@ -1,7 +1,28 @@
-.CreateRecipe{
+.CreateRecipe {
     background-color: var(--bg_gray);
     width: 100vw;
     height: 90vh;
     display: flex;
     flex-direction: column;
+    padding-top: 10px;
+}
+
+/* .CreateRecipe div {
+    align-items: center;
+    justify-content: center;
+} */
+.main-bodypart {
+    margin: 36px;
+}
+
+.recipeName {
+    align-items: center;
+    justify-content: space-around;
+    width: 60vw;
+}
+
+.CreateRecipe div h3 {
+    padding-right: 16px;
+    align-items: center;
+    justify-content: center;
 }
