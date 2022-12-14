@@ -28,7 +28,7 @@ function Login() {
         <h1>Recipe Library</h1>
       </div>
 
-      <form>
+      <form className='LoginPageForm'>
         <div className='InputContainer'>
           <label>Username or Email</label>
           <input type="text" name="name" onChange={(e) => setEmail(e.target.value)} />
