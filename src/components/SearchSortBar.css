@@ -1,0 +1,56 @@
+.SearchSortBar{
+    background-color: white;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 0;
+    width: 42vw;
+    border-color: var(--border_gray);
+    border-radius: 4px;
+    border-style: solid;    
+    display: flex;
+    flex-direction: column;
+    padding: 0.6em 0.6em;   
+}
+#search-box{
+    width: 40vw;
+    height: 100%;
+    border: 1px var(--border_gray) solid;
+    border-radius: 5px;
+}
+:placeholder-shown{
+    font-style: italic;
+}
+#search-box #search-text{
+    font-weight: 200;
+    width: 35vw;
+    outline: none;
+}
+#search-box #search-btn{
+    width: 5vw;
+}
+#Order{
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+#lbl{
+    margin-right: 6px;
+}
+#Order #rating{
+    margin-left: 5px;
+}
+#SearchTag{
+    margin-bottom: 15px;
+    
+}
+
+#SearchTag #search-tag {
+    border: 1px var(--border_gray) solid;
+    border-radius: 5px;
+    outline:none;
+    width: 30vw;
+    height: 1.5em;
+    font-weight: 200;
+}
+#Container {
+    margin-bottom: 8px;
+}
