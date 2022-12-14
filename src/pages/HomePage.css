@@ -4,4 +4,103 @@
     height: 90vh;
     display: flex;
     flex-direction: column;
+    
 }
+.RealBox{
+    background-color: white;
+    
+    width: 40vw;
+    margin-left: 442px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    border-color: var(--border_gray);
+    border-radius: 1px;
+    border-style: solid;    
+    display: flex;
+    flex-direction: column;
+    padding: 0.2em 0.2em;   
+}
+#search-box{
+    width: 40vw;
+    height: 100%;
+    
+}
+:placeholder-shown{
+    font-style: italic;
+}
+#search-box #search-text{
+   
+    font-weight: 200;
+    width: 35vw;
+    outline: none;
+}
+#search-box #search-btn{
+    width: 5vw;
+}
+.FilterBox{
+    background-color: white;
+    
+    width: 34vw;
+    margin-left: 442px;
+    margin-bottom: 20px;
+    border-color: var(--border_gray);
+    border-radius: 1px;
+    border-style: solid;    
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em 0.5em;
+}
+#Order{
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+#lbl{
+    margin-right: 6px;
+}
+#Order #rating{
+    margin-left: 5px;
+}
+#SearchTag{
+    margin-bottom: 15px;
+}
+
+#SearchTag #search-tag {
+    border-color: var(--border_gray);
+    border-radius: 1px;
+    border-style: solid;
+    outline:none;
+    width: 30vw;
+    font-weight: 200;
+}
+#Container {
+    margin-bottom: 8px;
+}
+.NewRecipe{
+    margin-left: 43vw;
+    margin-bottom: 30px;
+}
+
+.RecipeOfTheDay {
+    margin-left: 442px;
+}
+.RecipeOfTheDay #RecipeOfTheDay-header{
+    font-size: 20px;
+    
+    margin-left: 12.5vw;
+    margin-bottom: 15px;
+    
+}
+.RecipeOfTheDay #RecipeOfTheDay-panel{
+    background-color: white;
+    
+    width: 33vw;
+    
+    margin-bottom: 20px;    
+    border-color: var(--border_gray);
+    border-radius: 1px;
+    border-style: solid;    
+    display: flex;
+    flex-direction: column;
+    padding: 1em 1em;
+}
+
