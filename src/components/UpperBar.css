@@ -4,15 +4,17 @@
     background-color: white;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     border-width: 1px;
     border-color: var(--border_gray);
     border-bottom-style: solid;
+    position: fixed;
 }
 
 .UpperbarHomeButton{
     height: 6.6vh;
     width: 6.6vh;
-    border: 2px var(--border_gray) solid;
+    /* border: 2px var(--border_gray) solid; */
     padding: 3px 3px;
 }
 .UpperbarHomeButton img{
@@ -29,4 +31,19 @@
 }
 .UpperBarTitle img{
     width: 3em;
+}
+
+.BarLoginButton{
+    height: 5vh;
+    width: 8em;
+    background-color: white;
+    color: black;
+    border: 2.5px black solid;
+    border-radius: 20px;
+    font-size: 1.2em;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center; 
+    justify-content: center;
+    margin-right: 1em;
 }

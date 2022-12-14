@@ -1,0 +1,12 @@
+.ResultPage{
+    padding-top: 10vh;
+    background-color: var(--bg_gray);
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.ResultPage > .SearchSortBar{
+    margin-top: 25px;
+}

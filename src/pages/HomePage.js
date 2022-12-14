@@ -1,58 +1,27 @@
 import './HomePage.css'
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SearhSortBar from '../components/SearchSortBar';
 
 function HomePage() {
 	return (
-		<div class = "HomePage">
-			<div class ="RealBox">
-				<form action="" id="search-box">
-					<input type="text" id ="search-text" placeholder="Search..."/>
-					<button id="search-btn">Search</button>
-				</form>
+		<div className = "HomePage">
+			<SearhSortBar/>
 				
-			</div>
-			<div class ="FilterBox">
-				<div id="Order">
-					<label id="lbl">Order by:    </label>
-					<input type="radio" id="time" name="sort"/> Time <input type="radio" id="rating" name="sort" /> Rating
-				</div>
-				<div id="SearchTag">
-					<label id="lbl">Tags: </label>
-					<input type="text" id ="search-tag" placeholder="Search tags..."/>
-				</div>
-				<div id="Container">
-					<tag>
-						
-						Noodles
-					</tag>
-					<tag>
-						Fish
-					</tag>
-					<tag>
-						Vegan
-					</tag>
-				</div>
-			</div>
-			<div class="NewRecipe">
+			<div className="NewRecipe">
 				<Link to= "/CreateRecipe">
 					<button>Create New Recipe</button>
 				</Link>
 			</div>
-			<div class="RecipeOfTheDay">
+			<div className="RecipeOfTheDay">
 				<div id="RecipeOfTheDay-header">
 					Recipe Of The Day
 				</div>
 				<div id="RecipeOfTheDay-panel">
-					<recipeTitle>
-						Homemade Fish
-					</recipeTitle>
-					<recipeTitle>
-						Vegan Noodle
-					</recipeTitle>
-					<recipeTitle>
-						Authentic Pho
-					</recipeTitle>
+					<Link to= "/ViewRecipe">
+						<h1>Recipe name</h1><br/>
+						<p>By Author</p>
+					</Link>
 				</div>
 			</div>
 			
