@@ -16,21 +16,27 @@
     height: 100%;
     border: 1px var(--border_gray) solid;
     border-radius: 5px;
+    margin-left: 0.5em;
 }
 :placeholder-shown{
     font-style: italic;
 }
 #search-box #search-text{
     font-weight: 200;
-    width: 35vw;
+    font-size: 1em;
+    width: 32.5vw;
     outline: none;
+    padding: 0.4em 1em;
 }
 #search-box #search-btn{
-    width: 5vw;
+    width: 5.1vw;
+    height: 3em;
+    background-color: aqua;
 }
 #Order{
-    margin-top: 5px;
-    margin-bottom: 10px;
+    margin-top: 13px;
+    margin-bottom: 13px;
+    margin-left: 0.5em;
 }
 #lbl{
     margin-right: 6px;
@@ -39,8 +45,12 @@
     margin-left: 5px;
 }
 #SearchTag{
-    margin-bottom: 15px;
-    
+    margin-bottom: 10px;
+    margin-left: 0.5em;
+    display: flex;
+    gap: 0.5em;
+    width: 35vw;
+    align-items: center;
 }
 
 #SearchTag #search-tag {
@@ -50,7 +60,4 @@
     width: 30vw;
     height: 1.5em;
     font-weight: 200;
-}
-#Container {
-    margin-bottom: 8px;
 }

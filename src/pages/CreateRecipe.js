@@ -35,7 +35,7 @@ function CreateRecipe() {
                                 {...params}
                                 // variant="filled"
                                 label="Tags"
-                                placeholder="Your customize input..."
+                                placeholder="Add tags..."
                             />
                         )}
                     />
