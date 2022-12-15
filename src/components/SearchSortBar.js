@@ -1,8 +1,13 @@
 import React from 'react';
 import './SearchSortBar.css';
 import { Link } from 'react-router-dom';
+import Autocomplete from '@mui/material/Autocomplete';
+import Chip from '@mui/material/Chip';
+import TextField from '@mui/material/TextField';
 
 function SearhSortBar() {
+    const Tags = ['Tatsy', 'Chicken', 'Pizza', 'Noodle', 'CleanEating', 'HealthyFood', 'JustEatRealFood', 'VeganFood', 'HealthyFoodRecipes', 'HealthyFoodLover', 'Popcorn']
+    
     return ( 
         <div className ="SearchSortBar">
             <form action="" id="search-box">
@@ -18,19 +23,31 @@ function SearhSortBar() {
             </div>
             <div id="SearchTag">
                 <label id="lbl">Tags: </label>
-                <input type="text" id ="search-tag" placeholder="Search tags..."/>
+                <Autocomplete
+                    multiple
+                    id="search-tags-filled"
+                    options={Tags.map((option) => option)}
+                    defaultValue={[Tags[0]]}
+                    freeSolo
+                    renderTags={(value, getTagProps) =>
+                        value.map((option, index) => (
+                            <Chip variant="outlined" label={option} {...getTagProps({ index })} />
+                        ))
+                    }
+                    renderInput={(params) => (
+                        <TextField
+                            {...params}
+                            // variant="filled"
+                            label=""
+                            placeholder="Add tags..."
+                        />
+                    )}
+                    sx={{ 
+                        width: '35vw' ,
+                    }}
+                    size="small"
+                />
             </div>
-            <div id="Container">
-                <label>
-                    Noodles
-                </label>
-                <label>
-                    Fish
-                </label>
-                <label>
-                    Vegan
-                </label>
-            </div>	
         </div>
     );
 }
