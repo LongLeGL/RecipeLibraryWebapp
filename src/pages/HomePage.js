@@ -1,13 +1,13 @@
 import './HomePage.css'
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Routes , Route} from 'react-router-dom';
 import SearhSortBar from '../components/SearchSortBar';
+import ResultPage from './ResultPage.js'
+import { useState } from 'react';
 
 function HomePage() {
-	return (
-		<div className = "HomePage">
-			<SearhSortBar/>
-				
+	const homePageDisplays = 
+		<React.Fragment>
 			<div className="NewRecipe">
 				<Link to= "/CreateRecipe">
 					<button>Create New Recipe</button>
@@ -24,7 +24,17 @@ function HomePage() {
 					</Link>
 				</div>
 			</div>
-			
+		</React.Fragment>
+
+		const [searchResults, setResults] = useState([]);
+		
+	return (
+		<div className = "HomePage">
+			<SearhSortBar outputSetter={setResults} />
+			<Routes>
+				<Route path="/ResultPage" element={<ResultPage results={searchResults} />} exact='True' />
+				<Route path="/" exact='True' element={homePageDisplays}  />
+			</Routes>			
 		</div>
 	);
 }
