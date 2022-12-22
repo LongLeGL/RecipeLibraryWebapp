@@ -3,6 +3,7 @@ import React from 'react';
 import { Link, Routes , Route} from 'react-router-dom';
 import SearhSortBar from '../components/SearchSortBar';
 import ResultPage from './ResultPage.js'
+import { useState } from 'react';
 
 function HomePage() {
 	const homePageDisplays = 
@@ -24,11 +25,14 @@ function HomePage() {
 				</div>
 			</div>
 		</React.Fragment>
+
+		const [searchResults, setResults] = useState([]);
+		
 	return (
 		<div className = "HomePage">
-			<SearhSortBar/>
+			<SearhSortBar outputSetter={setResults} />
 			<Routes>
-				<Route path="/ResultPage" element={<ResultPage/>} exact='True' />
+				<Route path="/ResultPage" element={<ResultPage results={searchResults} />} exact='True' />
 				<Route path="/" exact='True' element={homePageDisplays}  />
 			</Routes>			
 		</div>

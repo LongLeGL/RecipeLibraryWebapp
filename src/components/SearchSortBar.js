@@ -5,15 +5,22 @@ import Autocomplete from '@mui/material/Autocomplete';
 import Chip from '@mui/material/Chip';
 import TextField from '@mui/material/TextField';
 
-function SearhSortBar() {
+function SearhSortBar({outputSetter}) {
     const Tags = ['Tatsy', 'Chicken', 'Pizza', 'Noodle', 'CleanEating', 'HealthyFood', 'JustEatRealFood', 'VeganFood', 'HealthyFoodRecipes', 'HealthyFoodLover', 'Popcorn']
-    
+    function handleSearchSubmit(){
+        //query results based on keywords, sort option, tags, save all into gotResults variable
+        var gotResults = [];
+        outputSetter(gotResults);
+    }
+
+
     return ( 
         <div className ="SearchSortBar">
             <form action="" id="search-box">
                 <input type="text" id ="search-text" placeholder="Search..."/>
-                <Link to="/ResultPage">
-                    <button id="search-btn">Search</button>
+{/* Submit search requirements */}
+                <Link to='/ResultPage'>
+                    <button id="search-btn" onClick={handleSearchSubmit}>Search</button>
                 </Link>
             </form>
 

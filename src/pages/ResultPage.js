@@ -3,11 +3,11 @@ import React from 'react';
 // import SearhSortBar from '../components/SearchSortBar';
 import ResultItem from '../components/ResultItem';
 
-function HomePage() {
+function HomePage({results}) {
+	console.log(results);
+	
 	return (
 		<div className = "ResultPage">
-			{/* <SearhSortBar/> */}
-				
 			<div className='ResultsContainer'>
 				<ResultItem Name='Rice' Author='Chinqau' Link='/ViewRecipe' />
 				<ResultItem Name='Spaghetti' Author='Antonio' Link='/ViewRecipe' />

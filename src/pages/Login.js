@@ -16,8 +16,9 @@ function Login() {
 
     if (!email && !password)  //database validation failed
       seterrMsg("Wrong username or password !");
-    
-    window.location.href = '/';
+    else{ //login successful
+      window.location.href = '/';
+    }
   }
 
   function handleRegister(){

@@ -18,6 +18,7 @@ function Register() {
         else if (password !== passwordr) seterrMsg("Passwords don't match !");
         else{
         //submit to database
+        //{...}
         alert("Registration sucessful !");
         window.location.href = '/Login';
         }
