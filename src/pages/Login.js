@@ -8,9 +8,8 @@ function Login() {
   const [password, setPassword] = useState("");
   const [errMsg, seterrMsg] = useState("");
 
-  function handleSubmit(e) {
+  function handleLogin() {
     seterrMsg('');
-    e.preventDefault();
     console.log(email, password);
     if (!email) seterrMsg("Username or Email required !");
     else if (!password) seterrMsg("Password required !");
@@ -19,6 +18,10 @@ function Login() {
       seterrMsg("Wrong username or password !");
     
     window.location.href = '/';
+  }
+
+  function handleRegister(){
+    window.location.href = '/Register';
   }
 
   return (
@@ -37,8 +40,11 @@ function Login() {
           <label>Password</label>
           <input type="password" name="password" onChange={e => setPassword(e.target.value)} />
         </div>
-        <input type='submit' value='Login' onClick={handleSubmit} />
       </form>
+      <div className='ActionButtonGroup'>
+        <button onClick={handleLogin}>Login</button>
+        <button onClick={handleRegister}>Register</button>
+      </div>
 
       <div className= {!errMsg ? 'LoginErrMsg.hidden' : 'LoginErrMsg'}>{errMsg}</div>
     </div>

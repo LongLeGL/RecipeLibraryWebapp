@@ -1,12 +1,14 @@
-.LoginPage {
+.RegisterPage {
     width: 100vw;
     height: 100vh;
     background-color: var(--bg_gray);
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.LoginPageTitle {
+.RegisterPageTitle {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -16,10 +18,11 @@
     font-weight: 800;
 }
 
-.LoginPageForm {
-    margin-top: 2em;
+.RegisterPageForm {
     display: flex;
     flex-direction: column;
+    gap: 2em;
+    padding-top: 10vh;
 }
 
 .InputContainer {
@@ -47,13 +50,9 @@
     outline: none;
 }
 
-.LoginPage > .ActionButtonGroup{
-    display: flex;
-    gap: 2em;
-    justify-content: center;
-}
-.LoginPage > .ActionButtonGroup > button {
-    margin-top: 1em;
+.RegisterPage > .RegisterSubmit {
+    margin: auto;
+    margin-top: 2em;
     text-align: center;
     font-size: 1.2em;
     padding: 0.5em 1.5em;
@@ -63,8 +62,8 @@
     color: white;
 }
 
-.LoginErrMsg{
-    font-size: 1em;
+.RegisterErrMsg{
+    font-size: 5em;
     background-color: crimson;
     width: fit-content;
     margin: auto;

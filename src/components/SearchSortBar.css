@@ -1,7 +1,7 @@
 .SearchSortBar{
     background-color: white;
     margin: auto;
-    margin-top: 50px;
+    margin-top: 15px;
     margin-bottom: 0;
     width: 42vw;
     border-color: var(--border_gray);

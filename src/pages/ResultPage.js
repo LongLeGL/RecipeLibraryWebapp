@@ -1,12 +1,12 @@
 import './ResultPage.css'
 import React from 'react';
-import SearhSortBar from '../components/SearchSortBar';
+// import SearhSortBar from '../components/SearchSortBar';
 import ResultItem from '../components/ResultItem';
 
 function HomePage() {
 	return (
 		<div className = "ResultPage">
-			<SearhSortBar/>
+			{/* <SearhSortBar/> */}
 				
 			<div className='ResultsContainer'>
 				<ResultItem Name='Rice' Author='Chinqau' Link='/ViewRecipe' />
