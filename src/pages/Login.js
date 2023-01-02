@@ -14,6 +14,7 @@ function Login() {
     const result = await authenticate(email, password)
     return result;
   }
+
   function handleSubmit(e) {
     e.preventDefault();
     seterrMsg('');
@@ -22,7 +23,8 @@ function Login() {
     else{
       fetchUser(email, password).then(result => {
         if(result[0]) {
-          console.log(result[1])        ///////  
+          console.log(result);
+          sessionStorage.setItem('username', result[1])
           navigate("/")
         }else{
           seterrMsg("Wrong username or password !");
@@ -47,8 +49,12 @@ function Login() {
           <label>Password</label>
           <input type="password" name="password" onChange={e => setPassword(e.target.value)} />
         </div>
-        <input type='submit' value='Login' onClick={handleSubmit} />
       </form>
+
+      <div className='ActionButtonGroup'>
+        <button onClick={handleSubmit}> Login </button>
+        <button onClick={()=> navigate("/Register")}> Register </button>
+      </div>
 
       <div className= {!errMsg ? 'LoginErrMsg.hidden' : 'LoginErrMsg'}>{errMsg}</div>
     </div>
