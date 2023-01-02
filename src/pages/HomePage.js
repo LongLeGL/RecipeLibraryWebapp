@@ -8,14 +8,22 @@ import { getRandomRecipe } from '../firebase/database';
 
 function HomePage() {
 	const username = sessionStorage.getItem('username');
+	const [recommdedRecipeState, setrecommdedRecipeState] = useState({});
 
 	const getRecommendation = async () => {
 		const result = await getRandomRecipe();
 		return result;
 	}
-	const recommdedRecipe = getRecommendation();
-	console.log(recommdedRecipe);
-
+	// var recommdedRecipe2;
+	var recommdedRecipe = {};
+	getRecommendation().then(result => {
+		if (!recommdedRecipeState.name){
+			recommdedRecipe=result;
+			console.log(recommdedRecipe.name);
+			setrecommdedRecipeState(recommdedRecipe);
+		}
+	});
+	
 	const homePageDisplays = 
 		<React.Fragment>
 			<div className="NewRecipe">
@@ -25,12 +33,12 @@ function HomePage() {
 			</div>
 			<div className="RecipeOfTheDay">
 				<div id="RecipeOfTheDay-header">
-					Recipe Of The Day
+					Recipe recommendation
 				</div>
 				<div id="RecipeOfTheDay-panel">
 					<Link to= "/ViewRecipe">
-						<h1>{recommdedRecipe.name}</h1><br/>
-						<p>By {recommdedRecipe.username}</p>
+						<h1>{recommdedRecipeState.name}</h1><br/>
+						<p>By {recommdedRecipeState.username}</p>
 					</Link>
 				</div>
 			</div>

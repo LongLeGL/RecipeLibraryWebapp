@@ -146,7 +146,7 @@ export async function getRandomRecipe(){
       iterator+=1
     })
   }
-  console.log("random recipe here",returnRecipe)
+  // console.log("random recipe here",returnRecipe)
   return returnRecipe
 }
 
