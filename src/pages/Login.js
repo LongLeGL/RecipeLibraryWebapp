@@ -1,28 +1,34 @@
 import './Login.css';
 import './global.css'
 import React, {useState} from 'react';
-
+import {  authenticate } from "../firebase/database"
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
+  const navigate = useNavigate()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errMsg, seterrMsg] = useState("");
 
-  function handleLogin() {
+  const fetchUser = async (email, password) => {
+    const result = await authenticate(email, password)
+    return result;
+  }
+  function handleSubmit(e) {
+    e.preventDefault();
     seterrMsg('');
-    console.log(email, password);
     if (!email) seterrMsg("Username or Email required !");
     else if (!password) seterrMsg("Password required !");
-
-    if (!email && !password)  //database validation failed
-      seterrMsg("Wrong username or password !");
-    else{ //login successful
-      window.location.href = '/';
+    else{
+      fetchUser(email, password).then(result => {
+        if(result[0]) {
+          console.log(result[1])        ///////  
+          navigate("/")
+        }else{
+          seterrMsg("Wrong username or password !");
+        }
+      })
     }
-  }
-
-  function handleRegister(){
-    window.location.href = '/Register';
   }
 
   return (
@@ -41,11 +47,8 @@ function Login() {
           <label>Password</label>
           <input type="password" name="password" onChange={e => setPassword(e.target.value)} />
         </div>
+        <input type='submit' value='Login' onClick={handleSubmit} />
       </form>
-      <div className='ActionButtonGroup'>
-        <button onClick={handleLogin}>Login</button>
-        <button onClick={handleRegister}>Register</button>
-      </div>
 
       <div className= {!errMsg ? 'LoginErrMsg.hidden' : 'LoginErrMsg'}>{errMsg}</div>
     </div>
