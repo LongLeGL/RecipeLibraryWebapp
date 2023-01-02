@@ -10,7 +10,7 @@ function UpperBar (props) {
 	function onclUpperBarUserBtn (){
 		if (username){
 			sessionStorage.setItem('username', '');
-			navigate('/');
+			window.location.href = '/';
 		}
 		else navigate('/Login')
 	}

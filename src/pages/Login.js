@@ -24,8 +24,8 @@ function Login() {
       fetchUser(email, password).then(result => {
         if(result[0]) {
           console.log(result);
-          sessionStorage.setItem('username', result[1])
-          navigate("/")
+          sessionStorage.setItem('username', result[1]);
+          navigate("/");
         }else{
           seterrMsg("Wrong username or password !");
         }
