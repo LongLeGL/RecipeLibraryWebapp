@@ -34,7 +34,7 @@ function getRandomInt(min,max) {
 }
 
 // Get user -  login
-/////////////////////       Getusername and password         
+/////////////////////       Getusername and password    |   return array contains login status at index 0 and username at index 1 (if created successfully) 
 export async function authenticate(username, password) {
   const userSnap = await getDocs(userCol)
   let loginStatus =[]
@@ -55,7 +55,28 @@ export async function authenticate(username, password) {
 }
 
 
-//////////////////////      get a single recipe ( use when clickin one)
+//////////////////////       Register      |      return array contains register status at index 0 and username at index 1 (if created successfully)
+export async function accountRegister(regusername, regpassword){
+  const userSnap = await getDocs(userCol)
+  let registerStatus =[]
+  let verified = true;
+
+  if(!userSnap.empty) {
+    userSnap.forEach(user => {
+      if(user.data().username == regusername){
+        verified=false       
+      }
+    })
+  }
+  registerStatus.push(verified)
+  if(verified){
+    addDoc(userCol,{username:regusername,password:regpassword})
+    registerStatus.push(regusername)
+  }
+  return registerStatus 
+}
+
+//////////////////////      get a single recipe ( use when clickin one)  |   return a recipe as js object
 export async function getRecipeByName(recipeName,username){
   const recipeSnap = await getDocs(recipeCol)
   let recipeExist = false;
@@ -66,11 +87,11 @@ export async function getRecipeByName(recipeName,username){
       }
     })
   }
-  console.log(recipeExist)
+  //console.log(recipeExist)
 }
 
 
-/////////////////////        add recipe               
+/////////////////////        add recipe    |    return true if cannot add recipe   
 export async function userCreateRecipe(recipeObj, username){
   console.log(JSON.parse(JSON.stringify(recipeObj)))
   const getOwnRecipe = query(recipeCol, where('username',"==",username))
@@ -80,22 +101,24 @@ export async function userCreateRecipe(recipeObj, username){
   if(!ownRecipeSnap.empty){
     ownRecipeSnap.forEach(ownRec =>{
       if(ownRec.data().name == recipeObj.name){
-        console.log("U have already created a recipe with the same name!")   
+        //console.log("U have already created a recipe with the same name!")   
         //return message here if existed
         created=true
+        
       }
     })
   }
   // if no then add recipe
   if(!created){
     addDoc(recipeCol,recipeObj)
-    console.log("Recipe successfully added!")     
+    //console.log("Recipe successfully added!")     
     //return message here if add successfully                             
   }
+  return created
 }
 
 
-/////////////////////        get random recipe   | get random recipe with rating > 4.0        
+/////////////////////        get random recipe    |    return a recipe as js object  
 export async function getRandomRecipe(){
   const getGoodRecipe = query(recipeCol, where('rating',">=",4.0))
   const recipeSnap = await getDocs(getGoodRecipe)
@@ -106,28 +129,29 @@ export async function getRandomRecipe(){
       counter+=1;
     })
   }
-  console.log("recipes matched requirements",counter)
+  //console.log("recipes matched requirements",counter)
 
   //random recipe index
   let recommendIdx = getRandomInt(1,counter)
-  console.log("Random recipe id",recommendIdx)
+  //console.log("Random recipe id",recommendIdx)
 
   //get recipe with random index just created
   let iterator=1
+  let returnRecipe={}
   if(!recipeSnap.empty){
     recipeSnap.forEach(recipe =>{
-      if(iterator==recommendIdx){
-        console.log(recipe.data())        
-        //return recipe here
-        console.log("Here")
+      if(iterator==recommendIdx){   
+        returnRecipe=recipe.data()
       }
       iterator+=1
     })
   }
+  console.log("random recipe here",returnRecipe)
+  return returnRecipe
 }
 
 
-/////////////////////       search recipe      
+/////////////////////       search recipe     |     return an object array contains recipes as js object matched the tags
 export async function getRecipe(recipeName="", recipeTags, sortBy = 1){
   let Order = sortBy ? 'createdTime' : 'rating'
   const searchOrder = query(recipeCol, orderBy(Order))
@@ -161,15 +185,13 @@ export async function getRecipe(recipeName="", recipeTags, sortBy = 1){
     let autoInc = 0
     for(const i of searchRes){
       let recipeInfo = i.name
-      for(const ingredient of i.ingredients){
-        recipeInfo+=" "+ingredient                // get a search field contains names and ingredients
-      }
+      recipeInfo+=i.ingredients
       console.log(recipeInfo)
       searchIndex.add(autoInc,recipeInfo)
       autoInc+=1;
     }
     let matchedRecipe = searchIndex.search(recipeName)
-    console.log("Recipe index here: ", matchedRecipe)   // test with bún
+    console.log("Recipe index here: ", matchedRecipe)   
     // searchIndex.search return the index in searchRes that contains the input string
     // get recipes by index later
     let searchResIdx = 0
@@ -181,35 +203,39 @@ export async function getRecipe(recipeName="", recipeTags, sortBy = 1){
       searchResIdx += 1
     }
     console.log(returnRecipes)
-
-
+    return returnRecipes
   }
   else{
     console.log("Seach result here: ", searchRes)
-    //searchRes is an object array contains recipes matched the tags
+    return searchRes
   }
 }
 
 
-/////////////////////       update recipe rating                 
+/////////////////////       update recipe rating     
 export async function rateRecipe(username,recipeName,rate){
   const getAuthorRecipe = query(recipeCol, where("username","==",username))
   const sameAuthor = await getDocs(getAuthorRecipe)
   sameAuthor.forEach(async(recipe) => {
     if(recipe.data().name == recipeName){
-      console.log("Recipe id to update is: ",recipe.id)
+      //console.log("Recipe id to update is: ",recipe.id)
       
       let newRating = (recipe.data().rating * recipe.data().ratingCount + rate)/(recipe.data().ratingCount + 1)
+      let userRated = username + " " + rate
+      let newRatedUser = recipe.data().ratedUser
+      newRatedUser.push(userRated)
+      // console.log("new rating: ",newRating)
+      // console.log("new rating count: ",recipe.data().ratingCount+1)
       
-      console.log("new rating: ",newRating)
-      console.log("new rating count: ",recipe.data().ratingCount+1)
-
       const recipeRef = doc(db, "recipes", recipe.id)
       await updateDoc(recipeRef,{
         rating:newRating,
-        ratingCount:recipe.data().ratingCount + 1
+        ratingCount:recipe.data().ratingCount + 1,
+        ratedUser:newRatedUser
       })
     }
   })
 }
+
+
 
