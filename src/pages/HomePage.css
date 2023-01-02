@@ -10,6 +10,15 @@
 .NewRecipe{
     margin: 2.2em auto;
 }
+.CreateRecipeBtn{
+    background-color: #C1839F;
+    font-size: 1.1em;
+    height: 2.2em;
+}
+.CreateRecipeBtn:disabled{
+    background-color: #e1ced7;
+    cursor: default;
+}
 
 .RecipeOfTheDay {
     margin: 0 auto;

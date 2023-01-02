@@ -117,9 +117,9 @@ export async function getRandomRecipe(){
   if(!recipeSnap.empty){
     recipeSnap.forEach(recipe =>{
       if(iterator==recommendIdx){
-        console.log(recipe.data())        
-        //return recipe here
-        console.log("Here")
+        console.log(recipe.data());      
+        return(recipe.data());
+        // console.log("Here")
       }
       iterator+=1
     })
