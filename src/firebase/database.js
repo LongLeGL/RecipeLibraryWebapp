@@ -137,15 +137,17 @@ export async function getRandomRecipe(){
 
   //get recipe with random index just created
   let iterator=1
+  let returnRecipe={}
   if(!recipeSnap.empty){
     recipeSnap.forEach(recipe =>{
-      if(iterator==recommendIdx){
-        console.log(recipe.data())        
-        //return recipe here
+      if(iterator==recommendIdx){   
+        returnRecipe=recipe.data()
       }
       iterator+=1
     })
   }
+  console.log("random recipe here",returnRecipe)
+  return returnRecipe
 }
 
 
