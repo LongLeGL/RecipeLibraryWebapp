@@ -51,6 +51,7 @@ function HomePage() {
 			<SearhSortBar outputSetter={setResults} />
 			<Routes>
 				<Route path="/ResultPage" element={<ResultPage results={searchResults} />} exact='True' />
+
 				<Route path="/*" exact='True' element={homePageDisplays} />
 			</Routes>
 		</div>
