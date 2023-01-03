@@ -10,9 +10,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Router>
     <Routes>
-      <Route path="/*" element={<App/>} exact='True' />
-      <Route path="/Login" element={<Login/>} exact='True' />
-      <Route path="/Register" element={<Register/>} exact='True' />
+      <Route path="/RecipeLibraryWebapp/*" element={<App/>} exact='True' />
+      <Route path="/RecipeLibraryWebapp/Login" element={<Login/>} exact='True' />
+      <Route path="/RecipeLibraryWebapp/Register" element={<Register/>} exact='True' />
     </Routes>
   </Router>
 );

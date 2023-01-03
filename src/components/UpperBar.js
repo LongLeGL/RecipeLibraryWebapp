@@ -13,7 +13,7 @@ function UpperBar (props) {
 			sessionStorage.setItem('username', '');
 			window.location.href = '/RecipeLibraryWebapp';
 		}
-		else navigate('/Login')
+		else navigate('/RecipeLibraryWebapp/Login')
 	}
 
 	return (
