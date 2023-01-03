@@ -1,6 +1,7 @@
 {
   "name": "uwc2.0_react",
   "version": "0.1.0",
+  "homepage": "https://LongLeGL.github.io/RecipeLibraryWebapp",
   "private": true,
   "dependencies": {
     "@date-io/date-fns": "^2.16.0",
@@ -15,6 +16,8 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "dayjs": "^1.11.6",
+    "firebase": "^9.15.0",
+    "flexsearch": "^0.7.31",
     "gridjs": "^5.1.0",
     "gridjs-react": "^5.1.0",
     "leaflet": "^1.9.3",
@@ -32,7 +35,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -51,5 +56,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^4.0.0"
   }
 }
