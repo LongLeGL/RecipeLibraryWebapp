@@ -53,7 +53,14 @@ function ViewRecipe() {
     }
 
     const handleSave = () => {
-
+        const fileData = JSON.stringify(recommdedRecipeState);
+        const blob = new Blob([fileData], { type: "text/plain" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.download = "user-info.txt";
+        link.href = url;
+        link.click();
+        alert("Download success!")
     }
 
     const Tags = ['Tatsy', 'Chicken', 'Pizza', 'Noodle', 'CleanEating', 'HealthyFood', 'JustEatRealFood', 'VeganFood', 'HealthyFoodRecipes', 'HealthyFoodLover', 'Popcorn']
