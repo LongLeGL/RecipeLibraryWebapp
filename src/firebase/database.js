@@ -84,7 +84,7 @@ export async function getRecipeByName(recipeName, username) {
   if (!recipeSnap.empty) {
     recipeSnap.forEach(recipe => {
       if (recipe.data().name === recipeName && recipe.data().username === username) {
-        retRec = recipe.data()
+        return (recipe.data())
       }
     })
   }

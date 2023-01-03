@@ -26,7 +26,7 @@ function Login() {
         if (result[0]) {
           console.log(result);
           sessionStorage.setItem('username', result[1]);
-          navigate("/");
+          navigate("/RecipeLibraryWebapp");
         } else {
           seterrMsg("Wrong username or password !");
         }
