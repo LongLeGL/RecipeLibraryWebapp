@@ -80,14 +80,15 @@ export async function accountRegister(regusername, regpassword){
 export async function getRecipeByName(recipeName,username){
   const recipeSnap = await getDocs(recipeCol)
   let recipeExist = false;
+  let retRec={}
   if(!recipeSnap.empty){
     recipeSnap.forEach(recipe => {
       if(recipe.data().name === recipeName && recipe.data().username === username){
-        return (recipe.data())
+        retRec = recipe.data()
       }
     })
   }
-  //console.log(recipeExist)
+  return retRec
 }
 
 
