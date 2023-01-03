@@ -6,66 +6,81 @@ import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import ReactStars from "react-rating-stars-component";
-import { useState } from 'react';
-import { rateRecipe, getRecipeByName } from "../components/firebase/database"
+import { useState, useEffect } from 'react';
+import { rateRecipe, getRecipeByName } from "../firebase/database"
 import { useParams } from "react-router-dom"
-// import { display } from '@mui/system';
+import { useNavigate } from "react-router-dom";
+
 
 function ViewRecipe() {
 
+    const navigate = useNavigate();
+    const [recommdedRecipeState, setrecommdedRecipeState] = useState(null);
+
     const { recipeName, userName } = useParams();
 
-    const { rating, name, } = getRecipeByName(recipeName, userName)
+    const getRecipe = async (recipeName, userName) => {
+        const result = await getRecipeByName(recipeName, userName);
+        return result;
+    }
 
-    const user = "Guest"
-    const nameOfRecipe = "Ice Cream"
-    const nameOfAuthor = "Thien Luu"
-    const rateNum = 4
-    const tags = ['Ice Cream']
-    const ingredient = "Ice Cream"
-    const instrucion = "Ice Cream"
+    useEffect(() => {
 
-    const [rate, setRate] = useState(0)
+        getRecipe(recipeName, userName).then(result => {
+
+            setrecommdedRecipeState(result);
+
+        });
+    }, [])
+
+    const user = sessionStorage.getItem('username');
+
+    const [rate, setRate] = useState()
 
     const ratingChanged = (newRating) => {
         setRate(newRating)
-        console.log(rate);
-        console.log("\n", typeof (rate));
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         if (!rate) {
             alert("Please rate before click this button!")
         } else {
-            rateRecipe(user, nameOfRecipe, Number(rate))
+            console.log(rate)
+            await rateRecipe(recommdedRecipeState.username, recommdedRecipeState.name, Number(rate))
             alert("Rate successfully!")
+            navigate("/");
         }
+    }
+
+    const handleSave = () => {
+
     }
 
     const Tags = ['Tatsy', 'Chicken', 'Pizza', 'Noodle', 'CleanEating', 'HealthyFood', 'JustEatRealFood', 'VeganFood', 'HealthyFoodRecipes', 'HealthyFoodLover', 'Popcorn']
     return (
-        <div className='ViewRecipe'>
+        recommdedRecipeState && <div className='ViewRecipe'>
             <div className='main-bodypart'>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
                     <h3>Recipe Name: </h3>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                         {/* <TextField disabled
-                            id="standard-disabled" label={nameOfRecipe} variant="outlined" /> */}
-                        <h1>{nameOfRecipe}</h1>
+                            id="standard-disabled" label={recommdedRecipeState.name} variant="outlined" /> */}
+                        <h1>{recommdedRecipeState.name}</h1>
                     </Box>
                 </div>
-                <h2>{nameOfAuthor}</h2>
+                <h2>{recommdedRecipeState.username}</h2>
                 <div style={{ paddingTop: '20px' }}>
                     <Autocomplete
                         multiple
                         id="tags-readOnly"
                         options={Tags.map((option) => option)}
-                        defaultValue={tags.map((item) => (item))}
+                        defaultValue={recommdedRecipeState.tags}
                         readOnly
                         renderInput={(params) => (
                             <TextField {...params} label="Tags" placeholder="." />
                         )}
                     />
+                    {/* {recommdedRecipeState.tags?.map((item) => (item))} */}
                 </div>
                 <div style={{ paddingTop: '20px' }}>
                     <TextField
@@ -75,12 +90,12 @@ function ViewRecipe() {
                             }
                         }}
                         // id="outlined-multiline-static"
-                        label="Ingredients"
+                        // label="recommdedRecipeState.ingredientss"
                         disabled
                         // id="component-disabled"
                         id="outlined-disabled"
                         multiline
-                        defaultValue={ingredient}
+                        defaultValue={recommdedRecipeState.ingredients}
                         rows={4}
                         fullWidth
                     />
@@ -91,12 +106,12 @@ function ViewRecipe() {
 
                         }}
                         // id="outlined-multiline-static"
-                        label="Intruction"
+                        // label="Intruction"
                         disabled
                         id="outlined-disabled"
                         multiline
                         rows={4}
-                        defaultValue={instrucion}
+                        defaultValue={recommdedRecipeState.steps}
                         fullWidth
                     />
                 </div>
@@ -108,16 +123,19 @@ function ViewRecipe() {
                             onChange={ratingChanged}
                             size={24}
                             isHalf={true}
-                            value={rateNum}
+                            value={recommdedRecipeState.rating}
                             emptyIcon={<i className="far fa-star"></i>}
                             halfIcon={<i className="fa fa-star-half-alt"></i>}
                             fullIcon={<i className="fa fa-star"></i>}
                             activeColor="#ffd700"
                         />
+                        <Stack spacing={2} direction="row">
+                            <Button onClick={handleSubmit} variant="outlined" >Submit rate</Button>
+                        </Stack>
                     </div>
                     <div>
                         <Stack spacing={2} direction="row">
-                            <Button onClick={handleSubmit} variant="outlined" >Save</Button>
+                            <Button onClick={handleSave} variant="outlined" >Save</Button>
                         </Stack>
                     </div>
                 </div>

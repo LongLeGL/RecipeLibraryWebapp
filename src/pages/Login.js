@@ -1,8 +1,8 @@
 import './Login.css';
-import './global.css'
+import './global.css';
+import logoImg from '../icons/logo.png';
 import React, { useState } from 'react';
-// import { authenticate } from "../firebase/database"
-import { authenticate } from "../components/firebase/database"
+import { authenticate } from "../firebase/database"
 import { useNavigate } from 'react-router-dom';
 
 function Login() {
@@ -15,6 +15,7 @@ function Login() {
     const result = await authenticate(email, password)
     return result;
   }
+
   function handleSubmit(e) {
     e.preventDefault();
     seterrMsg('');
@@ -23,8 +24,9 @@ function Login() {
     else {
       fetchUser(email, password).then(result => {
         if (result[0]) {
-          console.log(result[1])        ///////  
-          navigate("/")
+          console.log(result);
+          sessionStorage.setItem('username', result[1]);
+          navigate("/");
         } else {
           seterrMsg("Wrong username or password !");
         }
@@ -35,7 +37,7 @@ function Login() {
   return (
     <div className='LoginPage'>
       <div className='LoginPageTitle'>
-        <img src='/logo.png' alt='logo' />
+        <img src={logoImg} alt='logo' />
         <h1>Recipe Library</h1>
       </div>
 
@@ -48,8 +50,11 @@ function Login() {
           <label>Password</label>
           <input type="password" name="password" onChange={e => setPassword(e.target.value)} />
         </div>
-        <input type='submit' value='Login' onClick={handleSubmit} />
       </form>
+      <div className='ActionButtonGroup'>
+        <button onClick={handleSubmit}> Login </button>
+        <button onClick={() => navigate("/Register")}> Register </button>
+      </div>
 
       <div className={!errMsg ? 'LoginErrMsg.hidden' : 'LoginErrMsg'}>{errMsg}</div>
     </div>

@@ -8,7 +8,7 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 
 import { useNavigate } from "react-router-dom";
-import { userCreateRecipe } from "../components/firebase/database"
+import { userCreateRecipe } from "../firebase/database"
 
 function CreateRecipe() {
     const navigate = useNavigate();
@@ -20,15 +20,16 @@ function CreateRecipe() {
     const [ingredient, setIngredient] = useState("");
     const [instrucion, setInstrucion] = useState("");
 
-    useEffect(() => {
-        console.log(tags);
-    }, [tags]);
+    // useEffect(() => {
+    //     console.log(tags);
+    // }, [tags]);
 
-    function submitFunction() {
+
+    async function submitFunction() {
         if (!valueName && !tags && !ingredient && !instrucion) {
             alert("Please fill all information!")
         } else {
-            userCreateRecipe({ ingredients: ingredient, steps: instrucion, name: valueName, tags: tags, createdTime: Date(), username: user, ratingCount: 1, rating: 5, ratedUser: [] }, user)
+            await userCreateRecipe({ ingredients: ingredient, steps: instrucion, name: valueName, tags: tags, createdTime: Date.now(), username: user, ratingCount: 1, rating: 5, ratedUser: [] }, user)
             setValueName("")
             setIngredient("")
             setInstrucion("")

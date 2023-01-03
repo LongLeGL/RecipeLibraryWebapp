@@ -1,26 +1,37 @@
 import './Register.css';
 import './global.css'
 import React, {useState} from 'react';
+import { accountRegister } from '../firebase/database';
+import { useNavigate } from 'react-router-dom';
 
 function Register() {
+    const navigate = useNavigate()
+
+    const registerUser = async (nemail, npassword) => {
+        const result = await accountRegister(nemail, npassword)
+        return result;
+    }
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [passwordr, setPasswordr] = useState("");
     const [errMsg, seterrMsg] = useState("");
 
     function submitRegister(){
-        var savedEmails = ['taken', 'used']        //query all usernames from database
         seterrMsg('');
         console.log(email, password);
         if (!email) seterrMsg("Username or Email required !");
-        else if (savedEmails.includes(email)) seterrMsg("Username already taken !");
         else if (!password) seterrMsg("Password required !");
         else if (password !== passwordr) seterrMsg("Passwords don't match !");
         else{
-        //submit to database
-        //{...}
-        alert("Registration sucessful !");
-        window.location.href = '/Login';
+            registerUser(email, password).then(result => {
+                if(result[0]) {
+                    alert("Registration sucessful !");
+                    navigate("/");
+                }else{
+                  seterrMsg("Username is already taken !");
+                }
+              })
         }
 
       }

@@ -1,9 +1,21 @@
 import React from 'react';
 import './UpperBar.css'
-import { Link } from 'react-router-dom';
-import HomeIcon from '../icons/home.svg'
+import { Link, useNavigate } from 'react-router-dom';
+import HomeIcon from '../icons/home.svg';
+import logoImg from '../icons/logo.png';
+import Tooltip from "@mui/material/Tooltip";
 
 function UpperBar (props) {
+	const username = sessionStorage.getItem('username');
+	const navigate = useNavigate()
+	function onclUpperBarUserBtn (){
+		if (username){
+			sessionStorage.setItem('username', '');
+			window.location.href = '/';
+		}
+		else navigate('/Login')
+	}
+
 	return (
 		<div className='UpperBar'>
 			<Link to="/">
@@ -13,13 +25,16 @@ function UpperBar (props) {
 			</Link>
 
 			<div className='UpperBarTitle'>
-				<img src='/logo.png' alt='upperbarLogo' />
+				<img src={logoImg} alt='upperbarLogo_03.1/10:57' />
 				<h1>Cooking recipe library</h1>
 			</div>
 
-			<Link to="/Login">
-				<button className='BarLoginButton'>Login</button>
-			</Link>
+			<Tooltip
+				title={(username) ? 'Logout': 'Login to your account'}
+				leaveDelay={500}
+			>
+			<button className='BarLoginButton' onClick={onclUpperBarUserBtn}>{(username) ? username: 'Login'}</button>
+			</Tooltip>
 		</div>
 	);
 }
