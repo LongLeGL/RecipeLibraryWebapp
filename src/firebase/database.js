@@ -42,7 +42,7 @@ export async function authenticate(username, password) {
 
   if(!userSnap.empty) {
     userSnap.forEach(user => {
-      if(user.data().username == username && user.data().password == password){
+      if(user.data().username === username && user.data().password === password){
         verified = true;        
       }
     })
@@ -63,7 +63,7 @@ export async function accountRegister(regusername, regpassword){
 
   if(!userSnap.empty) {
     userSnap.forEach(user => {
-      if(user.data().username == regusername){
+      if(user.data().username === regusername){
         verified=false       
       }
     })
@@ -82,7 +82,7 @@ export async function getRecipeByName(recipeName,username){
   let recipeExist = false;
   if(!recipeSnap.empty){
     recipeSnap.forEach(recipe => {
-      if(recipe.data().name == recipeName && recipe.data().username == username){
+      if(recipe.data().name === recipeName && recipe.data().username === username){
         return (recipe.data())
       }
     })
@@ -94,13 +94,13 @@ export async function getRecipeByName(recipeName,username){
 /////////////////////        add recipe    |    return true if cannot add recipe   
 export async function userCreateRecipe(recipeObj, username){
   console.log(JSON.parse(JSON.stringify(recipeObj)))
-  const getOwnRecipe = query(recipeCol, where('username',"==",username))
+  const getOwnRecipe = query(recipeCol, where('username',"===",username))
   const ownRecipeSnap = await getDocs(getOwnRecipe)
   // check duplicate recipe by same user
   let created=false
   if(!ownRecipeSnap.empty){
     ownRecipeSnap.forEach(ownRec =>{
-      if(ownRec.data().name == recipeObj.name){
+      if(ownRec.data().name === recipeObj.name){
         //console.log("U have already created a recipe with the same name!")   
         //return message here if existed
         created=true
@@ -140,7 +140,7 @@ export async function getRandomRecipe(){
   let returnRecipe={}
   if(!recipeSnap.empty){
     recipeSnap.forEach(recipe =>{
-      if(iterator==recommendIdx){   
+      if(iterator===recommendIdx){   
         returnRecipe=recipe.data()
       }
       iterator+=1
@@ -163,7 +163,7 @@ export async function getRecipe(recipeName="", recipeTags, sortBy = 1){
     recipeSnap.forEach(recipe => {
       for(const i of recipeTags){
         if(recipe.data().tags.includes(i)){
-          if(i==recipeTags[recipeTags.length - 1]){
+          if(i===recipeTags[recipeTags.length - 1]){
             searchRes.push(recipe.data())
           }
         }
@@ -175,7 +175,7 @@ export async function getRecipe(recipeName="", recipeTags, sortBy = 1){
   }
   
   // Get the recipes that match the string input
-  if(recipeName != ""){
+  if(recipeName !== ""){
     var searchIndex = new Index({
       charset: "latin:extra",
       preset: 'match',
@@ -214,10 +214,10 @@ export async function getRecipe(recipeName="", recipeTags, sortBy = 1){
 
 /////////////////////       update recipe rating     
 export async function rateRecipe(username,recipeName,rate){
-  const getAuthorRecipe = query(recipeCol, where("username","==",username))
+  const getAuthorRecipe = query(recipeCol, where("username","===",username))
   const sameAuthor = await getDocs(getAuthorRecipe)
   sameAuthor.forEach(async(recipe) => {
-    if(recipe.data().name == recipeName){
+    if(recipe.data().name === recipeName){
       //console.log("Recipe id to update is: ",recipe.id)
       
       let newRating = (recipe.data().rating * recipe.data().ratingCount + rate)/(recipe.data().ratingCount + 1)

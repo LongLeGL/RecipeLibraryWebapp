@@ -1,7 +1,8 @@
 import React from 'react';
 import './UpperBar.css'
 import { Link, useNavigate } from 'react-router-dom';
-import HomeIcon from '../icons/home.svg'
+import HomeIcon from '../icons/home.svg';
+import logoImg from '../icons/logo.png';
 import Tooltip from "@mui/material/Tooltip";
 
 function UpperBar (props) {
@@ -24,7 +25,7 @@ function UpperBar (props) {
 			</Link>
 
 			<div className='UpperBarTitle'>
-				<img src='/logo.png' alt='upperbarLogo' />
+				<img src={logoImg} alt='upperbarLogo_03.1/10:57' />
 				<h1>Cooking recipe library</h1>
 			</div>
 
