@@ -80,6 +80,7 @@ export async function accountRegister(regusername, regpassword) {
 export async function getRecipeByName(recipeName, username) {
   const recipeSnap = await getDocs(recipeCol)
   let recipeExist = false;
+
   let retRec = {}
   if (!recipeSnap.empty) {
     recipeSnap.forEach(recipe => {
