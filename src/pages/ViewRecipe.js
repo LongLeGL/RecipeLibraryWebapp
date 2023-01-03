@@ -61,7 +61,7 @@ function ViewRecipe() {
                     console.log(rate)
                     await rateRecipe(recommdedRecipeState.username, recommdedRecipeState.name, Number(rate))
                     alert("Rate successfully!")
-                    navigate("/");
+                    // navigate("/");
                     // window.location.reload();
                 }
             }
