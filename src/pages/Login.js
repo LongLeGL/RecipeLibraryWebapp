@@ -1,5 +1,6 @@
 import './Login.css';
-import './global.css'
+import './global.css';
+import logoImg from '../icons/logo.png';
 import React, {useState} from 'react';
 import {  authenticate } from "../firebase/database"
 import { useNavigate } from 'react-router-dom';
@@ -36,7 +37,7 @@ function Login() {
   return (
     <div className='LoginPage'>
       <div className='LoginPageTitle'>
-        <img src='/logo.png' alt='logo' />
+        <img src={logoImg} alt='logo' />
         <h1>Recipe Library</h1>
       </div>
 
