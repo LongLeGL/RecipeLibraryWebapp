@@ -42,10 +42,11 @@ function CreateRecipe() {
 
     const Tags = ['Tatsy', 'Chicken', 'Pizza', 'Noodle', 'CleanEating', 'HealthyFood', 'JustEatRealFood', 'VeganFood', 'HealthyFoodRecipes', 'HealthyFoodLover', 'Popcorn']
     return (
+       
         <div className='CreateRecipe'>
             <div className='main-bodypart'>
                 <div className='recipeName' style={{ display: 'flex', alignItems: 'center' }}>
-                    <h3>Recipe Name: </h3>
+                    <h3>Recipe Name: here  </h3>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                         <TextField onChange={(e) => { setValueName(e.target.value) }} style={{ width: '40vw' }} id="outlined-basic" label="Your input..." variant="outlined" />
                     </Box>
