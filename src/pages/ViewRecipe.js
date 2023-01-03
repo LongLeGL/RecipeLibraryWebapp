@@ -6,12 +6,42 @@ import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import ReactStars from "react-rating-stars-component";
+import { useState } from 'react';
+import { rateRecipe, getRecipeByName } from "../components/firebase/database"
+import { useParams } from "react-router-dom"
 // import { display } from '@mui/system';
 
 function ViewRecipe() {
+
+    const { recipeName, userName } = useParams();
+
+    const { rating, name, } = getRecipeByName(recipeName, userName)
+
+    const user = "Guest"
+    const nameOfRecipe = "Ice Cream"
+    const nameOfAuthor = "Thien Luu"
+    const rateNum = 4
+    const tags = ['Ice Cream']
+    const ingredient = "Ice Cream"
+    const instrucion = "Ice Cream"
+
+    const [rate, setRate] = useState(0)
+
     const ratingChanged = (newRating) => {
-        console.log(newRating);
+        setRate(newRating)
+        console.log(rate);
+        console.log("\n", typeof (rate));
     };
+
+    const handleSubmit = () => {
+        if (!rate) {
+            alert("Please rate before click this button!")
+        } else {
+            rateRecipe(user, nameOfRecipe, Number(rate))
+            alert("Rate successfully!")
+        }
+    }
+
     const Tags = ['Tatsy', 'Chicken', 'Pizza', 'Noodle', 'CleanEating', 'HealthyFood', 'JustEatRealFood', 'VeganFood', 'HealthyFoodRecipes', 'HealthyFoodLover', 'Popcorn']
     return (
         <div className='ViewRecipe'>
@@ -19,16 +49,18 @@ function ViewRecipe() {
                 <div style={{ display: 'flex', alignItems: 'center' }}>
                     <h3>Recipe Name: </h3>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                        <TextField id="outlined-basic" label="Your input..." variant="outlined" />
+                        {/* <TextField disabled
+                            id="standard-disabled" label={nameOfRecipe} variant="outlined" /> */}
+                        <h1>{nameOfRecipe}</h1>
                     </Box>
                 </div>
-                <h2>By Anthony Trudy</h2>
+                <h2>{nameOfAuthor}</h2>
                 <div style={{ paddingTop: '20px' }}>
                     <Autocomplete
                         multiple
                         id="tags-readOnly"
                         options={Tags.map((option) => option)}
-                        defaultValue={[Tags[0], Tags[1], Tags[2]]}
+                        defaultValue={tags.map((item) => (item))}
                         readOnly
                         renderInput={(params) => (
                             <TextField {...params} label="Tags" placeholder="." />
@@ -42,9 +74,13 @@ function ViewRecipe() {
                                 style: { justifyContent: "right" },
                             }
                         }}
-                        id="outlined-multiline-static"
+                        // id="outlined-multiline-static"
                         label="Ingredients"
+                        disabled
+                        // id="component-disabled"
+                        id="outlined-disabled"
                         multiline
+                        defaultValue={ingredient}
                         rows={4}
                         fullWidth
                     />
@@ -54,10 +90,13 @@ function ViewRecipe() {
                         InputProps={{
 
                         }}
-                        id="outlined-multiline-static"
+                        // id="outlined-multiline-static"
                         label="Intruction"
+                        disabled
+                        id="outlined-disabled"
                         multiline
                         rows={4}
+                        defaultValue={instrucion}
                         fullWidth
                     />
                 </div>
@@ -69,6 +108,7 @@ function ViewRecipe() {
                             onChange={ratingChanged}
                             size={24}
                             isHalf={true}
+                            value={rateNum}
                             emptyIcon={<i className="far fa-star"></i>}
                             halfIcon={<i className="fa fa-star-half-alt"></i>}
                             fullIcon={<i className="fa fa-star"></i>}
@@ -77,7 +117,7 @@ function ViewRecipe() {
                     </div>
                     <div>
                         <Stack spacing={2} direction="row">
-                            <Button variant="outlined" >Save</Button>
+                            <Button onClick={handleSubmit} variant="outlined" >Save</Button>
                         </Stack>
                     </div>
                 </div>

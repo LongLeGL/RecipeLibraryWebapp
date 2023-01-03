@@ -1,7 +1,8 @@
 import './Login.css';
 import './global.css'
-import React, {useState} from 'react';
-import {  authenticate } from "../firebase/database"
+import React, { useState } from 'react';
+// import { authenticate } from "../firebase/database"
+import { authenticate } from "../components/firebase/database"
 import { useNavigate } from 'react-router-dom';
 
 function Login() {
@@ -19,12 +20,12 @@ function Login() {
     seterrMsg('');
     if (!email) seterrMsg("Username or Email required !");
     else if (!password) seterrMsg("Password required !");
-    else{
+    else {
       fetchUser(email, password).then(result => {
-        if(result[0]) {
+        if (result[0]) {
           console.log(result[1])        ///////  
           navigate("/")
-        }else{
+        } else {
           seterrMsg("Wrong username or password !");
         }
       })
@@ -50,7 +51,7 @@ function Login() {
         <input type='submit' value='Login' onClick={handleSubmit} />
       </form>
 
-      <div className= {!errMsg ? 'LoginErrMsg.hidden' : 'LoginErrMsg'}>{errMsg}</div>
+      <div className={!errMsg ? 'LoginErrMsg.hidden' : 'LoginErrMsg'}>{errMsg}</div>
     </div>
   );
 }
