@@ -1,8 +1,8 @@
 import './Login.css';
 import './global.css';
 import logoImg from '../icons/logo.png';
-import React, {useState} from 'react';
-import {  authenticate } from "../firebase/database"
+import React, { useState } from 'react';
+import { authenticate } from "../firebase/database"
 import { useNavigate } from 'react-router-dom';
 
 function Login() {
@@ -21,13 +21,14 @@ function Login() {
     seterrMsg('');
     if (!email) seterrMsg("Username or Email required !");
     else if (!password) seterrMsg("Password required !");
-    else{
+    else {
       fetchUser(email, password).then(result => {
-        if(result[0]) {
+        if (result[0]) {
           console.log(result);
           sessionStorage.setItem('username', result[1]);
           navigate("/RecipeLibraryWebapp");
-        }else{
+        } else {
+
           seterrMsg("Wrong username or password !");
         }
       })
@@ -51,13 +52,12 @@ function Login() {
           <input type="password" name="password" onChange={e => setPassword(e.target.value)} />
         </div>
       </form>
-
       <div className='ActionButtonGroup'>
         <button onClick={handleSubmit}> Login </button>
-        <button onClick={()=> navigate("/Register")}> Register </button>
+        <button onClick={() => navigate("/Register")}> Register </button>
       </div>
 
-      <div className= {!errMsg ? 'LoginErrMsg.hidden' : 'LoginErrMsg'}>{errMsg}</div>
+      <div className={!errMsg ? 'LoginErrMsg.hidden' : 'LoginErrMsg'}>{errMsg}</div>
     </div>
   );
 }

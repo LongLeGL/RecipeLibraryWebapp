@@ -6,34 +6,88 @@ import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import ReactStars from "react-rating-stars-component";
-// import { display } from '@mui/system';
+import { useState, useEffect } from 'react';
+import { rateRecipe, getRecipeByName } from "../firebase/database"
+import { useParams } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+
 
 function ViewRecipe() {
+
+    const navigate = useNavigate();
+    const [recommdedRecipeState, setrecommdedRecipeState] = useState(null);
+
+    const { recipeName, userName } = useParams();
+
+    const getRecipe = async (recipeName, userName) => {
+        const result = await getRecipeByName(recipeName, userName);
+        return result;
+    }
+
+    useEffect(() => {
+
+        getRecipe(recipeName, userName).then(result => {
+
+            setrecommdedRecipeState(result);
+
+        });
+    }, [])
+
+    const user = sessionStorage.getItem('username');
+
+    const [rate, setRate] = useState()
+
     const ratingChanged = (newRating) => {
-        console.log(newRating);
+        setRate(newRating)
     };
+
+    const handleSubmit = async () => {
+        if (!rate) {
+            alert("Please rate before click this button!")
+        } else {
+            console.log(rate)
+            await rateRecipe(recommdedRecipeState.username, recommdedRecipeState.name, Number(rate))
+            alert("Rate successfully!")
+            navigate("/");
+        }
+    }
+
+    const handleSave = () => {
+        const fileData = JSON.stringify(recommdedRecipeState);
+        const blob = new Blob([fileData], { type: "text/plain" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.download = "user-info.txt";
+        link.href = url;
+        link.click();
+        alert("Download success!")
+    }
+
     const Tags = ['Tatsy', 'Chicken', 'Pizza', 'Noodle', 'CleanEating', 'HealthyFood', 'JustEatRealFood', 'VeganFood', 'HealthyFoodRecipes', 'HealthyFoodLover', 'Popcorn']
     return (
-        <div className='ViewRecipe'>
+        recommdedRecipeState && <div className='ViewRecipe'>
             <div className='main-bodypart'>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
                     <h3>Recipe Name: </h3>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                        <TextField id="outlined-basic" label="Your input..." variant="outlined" />
+                        {/* <TextField disabled
+                            id="standard-disabled" label={recommdedRecipeState.name} variant="outlined" /> */}
+                        <h1>{recommdedRecipeState.name}</h1>
                     </Box>
                 </div>
-                <h2>By Anthony Trudy</h2>
+                <h2>{recommdedRecipeState.username}</h2>
                 <div style={{ paddingTop: '20px' }}>
                     <Autocomplete
                         multiple
                         id="tags-readOnly"
                         options={Tags.map((option) => option)}
-                        defaultValue={[Tags[0], Tags[1], Tags[2]]}
+                        defaultValue={recommdedRecipeState.tags}
                         readOnly
                         renderInput={(params) => (
                             <TextField {...params} label="Tags" placeholder="." />
                         )}
                     />
+                    {/* {recommdedRecipeState.tags?.map((item) => (item))} */}
                 </div>
                 <div style={{ paddingTop: '20px' }}>
                     <TextField
@@ -42,9 +96,13 @@ function ViewRecipe() {
                                 style: { justifyContent: "right" },
                             }
                         }}
-                        id="outlined-multiline-static"
-                        label="Ingredients"
+                        // id="outlined-multiline-static"
+                        // label="recommdedRecipeState.ingredientss"
+                        disabled
+                        // id="component-disabled"
+                        id="outlined-disabled"
                         multiline
+                        defaultValue={recommdedRecipeState.ingredients}
                         rows={4}
                         fullWidth
                     />
@@ -54,10 +112,13 @@ function ViewRecipe() {
                         InputProps={{
 
                         }}
-                        id="outlined-multiline-static"
-                        label="Intruction"
+                        // id="outlined-multiline-static"
+                        // label="Intruction"
+                        disabled
+                        id="outlined-disabled"
                         multiline
                         rows={4}
+                        defaultValue={recommdedRecipeState.steps}
                         fullWidth
                     />
                 </div>
@@ -69,15 +130,19 @@ function ViewRecipe() {
                             onChange={ratingChanged}
                             size={24}
                             isHalf={true}
+                            value={recommdedRecipeState.rating}
                             emptyIcon={<i className="far fa-star"></i>}
                             halfIcon={<i className="fa fa-star-half-alt"></i>}
                             fullIcon={<i className="fa fa-star"></i>}
                             activeColor="#ffd700"
                         />
+                        <Stack spacing={2} direction="row">
+                            <Button onClick={handleSubmit} variant="outlined" >Submit rate</Button>
+                        </Stack>
                     </div>
                     <div>
                         <Stack spacing={2} direction="row">
-                            <Button variant="outlined" >Save</Button>
+                            <Button onClick={handleSave} variant="outlined" >Save</Button>
                         </Stack>
                     </div>
                 </div>

@@ -1,6 +1,6 @@
 import './HomePage.css'
 import React from 'react';
-import { Link, Routes , Route} from 'react-router-dom';
+import { Link, Routes, Route } from 'react-router-dom';
 import SearhSortBar from '../components/SearchSortBar';
 import ResultPage from './ResultPage.js'
 import { useState } from 'react';
@@ -17,17 +17,17 @@ function HomePage() {
 	// var recommdedRecipe2;
 	var recommdedRecipe = {};
 	getRecommendation().then(result => {
-		if (!recommdedRecipeState.name){
-			recommdedRecipe=result;
+		if (!recommdedRecipeState.name) {
+			recommdedRecipe = result;
 			console.log(recommdedRecipe.name);
 			setrecommdedRecipeState(recommdedRecipe);
 		}
 	});
-	
-	const homePageDisplays = 
+
+	const homePageDisplays =
 		<React.Fragment>
 			<div className="NewRecipe">
-				<Link to= "/CreateRecipe">
+				<Link to="/CreateRecipe">
 					<button className='CreateRecipeBtn' disabled={!username}>Create New Recipe</button>
 				</Link>
 			</div>
@@ -36,23 +36,24 @@ function HomePage() {
 					Recipe recommendation
 				</div>
 				<div id="RecipeOfTheDay-panel">
-					<Link to= "/ViewRecipe">
-						<h1>{recommdedRecipeState.name}</h1><br/>
+					<Link to={`/ViewRecipe/${recommdedRecipeState.name}/${recommdedRecipeState.username}`}>
+						<h1>{recommdedRecipeState.name}</h1><br />
 						<p>By {recommdedRecipeState.username}</p>
 					</Link>
 				</div>
 			</div>
 		</React.Fragment>
 
-		const [searchResults, setResults] = useState([]);
-		
+	const [searchResults, setResults] = useState([]);
+
 	return (
-		<div className = "HomePage">
+		<div className="HomePage">
 			<SearhSortBar outputSetter={setResults} />
 			<Routes>
 				<Route path="/ResultPage" element={<ResultPage results={searchResults} />} exact='True' />
-				<Route path="/*" exact='True' element={homePageDisplays}  />
-			</Routes>			
+
+				<Route path="/*" exact='True' element={homePageDisplays} />
+			</Routes>
 		</div>
 	);
 }
