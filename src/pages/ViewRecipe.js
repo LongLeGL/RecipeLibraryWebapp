@@ -42,13 +42,29 @@ function ViewRecipe() {
     };
 
     const handleSubmit = async () => {
-        if (!rate) {
-            alert("Please rate before click this button!")
+        var checkRated = false;
+        recommdedRecipeState.ratedUser.map((users) => {
+            if (users.includes(user)) {
+                checkRated = true;
+            }
+        })
+        console.log(checkRated);
+        if (!user) {
+            alert("Please login before rate!")
         } else {
-            console.log(rate)
-            await rateRecipe(recommdedRecipeState.username, recommdedRecipeState.name, Number(rate))
-            alert("Rate successfully!")
-            navigate("/");
+            if (checkRated) {
+                alert("You have already rated this recipe!")
+            } else {
+                if (!rate) {
+                    alert("Please rate before click this button!")
+                } else {
+                    console.log(rate)
+                    await rateRecipe(recommdedRecipeState.username, recommdedRecipeState.name, Number(rate))
+                    alert("Rate successfully!")
+                    navigate("/");
+                    // window.location.reload();
+                }
+            }
         }
     }
 
@@ -57,7 +73,7 @@ function ViewRecipe() {
         const blob = new Blob([fileData], { type: "text/plain" });
         const url = URL.createObjectURL(blob);
         const link = document.createElement("a");
-        link.download = "user-info.txt";
+        link.download = "user-info.json";
         link.href = url;
         link.click();
         alert("Download success!")
