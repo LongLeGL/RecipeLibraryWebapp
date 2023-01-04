@@ -111,7 +111,7 @@ function ViewRecipe() {
                           },
                         }}
                         disabled
-                        // id="component-disabled"
+                        label="Ingredients"
                         id="outlined-disabled"
                         multiline
                         defaultValue={recommdedRecipeState.ingredients}
@@ -129,6 +129,7 @@ function ViewRecipe() {
                               WebkitTextFillColor: "#000000",
                           },
                         }}
+                        label="Instructions"
                         disabled
                         id="outlined-disabled"
                         multiline

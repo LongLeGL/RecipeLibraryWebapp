@@ -95,7 +95,7 @@ function CreateRecipe() {
                         }}
                         id="outlined-multiline-static"
                         style={{ whiteSpace: 'pre-line' }}
-                        label="Intruction"
+                        label="Instructions"
                         multiline
                         rows={4}
                         fullWidth
