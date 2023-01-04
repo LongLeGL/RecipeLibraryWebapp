@@ -9,12 +9,12 @@ function HomePage({results}) {
 	return (
 		<div className = "ResultPage">
 			<div className='ResultsContainer'>
-				<ResultItem Name='Rice' Author='Chinqau' Link='/ViewRecipe' />
-				<ResultItem Name='Spaghetti' Author='Antonio' Link='/ViewRecipe' />
-				<ResultItem Name='Taco' Author='Joseh' Link='/ViewRecipe' />
-				<ResultItem Name='Chicken' Author='Alice' Link='/ViewRecipe' />
-				<ResultItem Name='Rosoto' Author='Rose' Link='/ViewRecipe' />
-				<ResultItem Name='Cake' Author='Josh' Link='/ViewRecipe' />
+				<ResultItem Name='Rice' Author='Chinqau' Link='/RecipeLibraryWebapp/ViewRecipe' />
+				<ResultItem Name='Spaghetti' Author='Antonio' Link='/RecipeLibraryWebapp/ViewRecipe' />
+				<ResultItem Name='Taco' Author='Joseh' Link='/RecipeLibraryWebapp/ViewRecipe' />
+				<ResultItem Name='Chicken' Author='Alice' Link='/RecipeLibraryWebapp/ViewRecipe' />
+				<ResultItem Name='Rosoto' Author='Rose' Link='/RecipeLibraryWebapp/ViewRecipe' />
+				<ResultItem Name='Cake' Author='Josh' Link='/RecipeLibraryWebapp/ViewRecipe' />
 			</div>
 			
 		</div>

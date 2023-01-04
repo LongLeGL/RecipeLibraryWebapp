@@ -54,7 +54,7 @@ function Login() {
       </form>
       <div className='ActionButtonGroup'>
         <button onClick={handleSubmit}> Login </button>
-        <button onClick={() => navigate("/Register")}> Register </button>
+        <button onClick={()=> navigate("/RecipeLibraryWebapp/Register")}> Register </button>
       </div>
 
       <div className={!errMsg ? 'LoginErrMsg.hidden' : 'LoginErrMsg'}>{errMsg}</div>

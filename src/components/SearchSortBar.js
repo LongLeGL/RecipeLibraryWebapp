@@ -19,7 +19,7 @@ function SearhSortBar({outputSetter}) {
             <form action="" id="search-box">
                 <input type="text" id ="search-text" placeholder="Search..."/>
 {/* Submit search requirements */}
-                <Link to='/ResultPage'>
+                <Link to='/RecipeLibraryWebapp/ResultPage'>
                     <button id="search-btn" onClick={handleSearchSubmit}>Search</button>
                 </Link>
             </form>

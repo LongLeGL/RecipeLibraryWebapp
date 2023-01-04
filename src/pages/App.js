@@ -18,11 +18,9 @@ function App() {
     <React.Fragment>
       <UpperBar />
       <Routes>
-        <Route path="/*" element={<HomePage />} exact='True' />
-        <Route path="/ViewRecipe/:recipeName/:userName" element={<ViewRecipe />} exact='True' />
-        <Route path="/CreateRecipe" element={<CreateRecipe />} exact='True' />
-        <Route path="/Register" element={<Register />} exact='True' />
-        {/* <Route path="/ResultPage" element={<ResultPage/>} exact='True' /> */}
+        <Route path="/*" element={<HomePage/>} exact='True' />
+        <Route path="/ViewRecipe" element={<ViewRecipe/>} exact='True' />
+        <Route path="/CreateRecipe" element={<CreateRecipe/>} exact='True' />
       </Routes>
     </React.Fragment>
   );
