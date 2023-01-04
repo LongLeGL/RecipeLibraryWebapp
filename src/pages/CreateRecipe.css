@@ -4,7 +4,8 @@
     height: 90vh;
     display: flex;
     flex-direction: column;
-    padding-top: 10px;
+    padding-top: 10vh;
+    overflow-y: auto;
 }
 
 /* .CreateRecipe div {
@@ -12,7 +13,7 @@
     justify-content: center;
 } */
 .main-bodypart {
-    padding-top: 5vh;
+    padding-top: 0vh;
     margin: 36px;
 }
 

@@ -35,12 +35,12 @@ function CreateRecipe() {
             setInstrucion("")
             setTags([])
             alert("Recipe successfully added!")
-            navigate("/");
+            navigate("/RecipeLibraryWebapp");
         }
     }
 
 
-    const Tags = ['Tatsy', 'Chicken', 'Pizza', 'Noodle', 'CleanEating', 'HealthyFood', 'JustEatRealFood', 'VeganFood', 'HealthyFoodRecipes', 'HealthyFoodLover', 'Popcorn']
+    const Tags = ['BreakFast', 'MainMeal', 'LightMeal', 'Desert', 'CleanEating', 'HealthyFood', 'Vegan', 'JunkFood', 'Snack']
     return (
         <div className='CreateRecipe'>
             <div className='main-bodypart'>
@@ -50,8 +50,9 @@ function CreateRecipe() {
                         <TextField onChange={(e) => { setValueName(e.target.value) }} style={{ width: '40vw' }} id="outlined-basic" label="Your input..." variant="outlined" />
                     </Box>
                 </div>
-                <div style={{ paddingTop: '20px' }}>
+                <div style={{ paddingTop: '20px'}}>
                     <Autocomplete
+                        sx={{maxHeight: 80, overflow: 'auto', paddingTop: '10px'}}
                         multiple
                         id="tags-filled"
                         options={Tags.map((option) => option)}
@@ -67,7 +68,7 @@ function CreateRecipe() {
                             <TextField
                                 {...params}
                                 label="Tags"
-                                placeholder="Add tags..."
+                                placeholder="Choose of type your own tags..."
                             />
                         )}
                     />
@@ -94,7 +95,7 @@ function CreateRecipe() {
                         }}
                         id="outlined-multiline-static"
                         style={{ whiteSpace: 'pre-line' }}
-                        label="Intruction"
+                        label="Instructions"
                         multiline
                         rows={4}
                         fullWidth
