@@ -72,21 +72,21 @@ function ViewRecipe() {
         saveRecipe(recommdedRecipeState)
     }
 
-    const Tags = ['Tatsy', 'Chicken', 'Pizza', 'Noodle', 'CleanEating', 'HealthyFood', 'JustEatRealFood', 'VeganFood', 'HealthyFoodRecipes', 'HealthyFoodLover', 'Popcorn']
+    const Tags = ['BreakFast', 'MainMeal', 'LightMeal', 'Desert', 'CleanEating', 'HealthyFood', 'Vegan', 'JunkFood', 'Snack']
     return (
         recommdedRecipeState && <div className='ViewRecipe'>
-            <div className='main-bodypart'>
+            <div className='main-bodypartv'>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <h3>Recipe Name: </h3>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                         {/* <TextField disabled
                             id="standard-disabled" label={recommdedRecipeState.name} variant="outlined" /> */}
                         <h1>{recommdedRecipeState.name}</h1>
                     </Box>
                 </div>
-                <h2>{recommdedRecipeState.username}</h2>
+                <h2>By {recommdedRecipeState.username}</h2>
                 <div style={{ paddingTop: '20px' }}>
                     <Autocomplete
+                        sx={{maxHeight: 60, overflow: 'auto', paddingTop: '10px', justifyContent: "right"}}
                         multiple
                         id="tags-readOnly"
                         options={Tags.map((option) => option)}
@@ -102,11 +102,14 @@ function ViewRecipe() {
                     <TextField
                         InputProps={{
                             inputProps: {
-                                style: { justifyContent: "right" },
+                                style: { justifyContent: "right", color: 'white' },
                             }
                         }}
-                        // id="outlined-multiline-static"
-                        // label="recommdedRecipeState.ingredientss"
+                        sx={{
+                            "& .MuiInputBase-input.Mui-disabled": {
+                              WebkitTextFillColor: "#000000",
+                          },
+                        }}
                         disabled
                         // id="component-disabled"
                         id="outlined-disabled"
@@ -121,8 +124,11 @@ function ViewRecipe() {
                         InputProps={{
 
                         }}
-                        // id="outlined-multiline-static"
-                        // label="Intruction"
+                        sx={{
+                            "& .MuiInputBase-input.Mui-disabled": {
+                              WebkitTextFillColor: "#000000",
+                          },
+                        }}
                         disabled
                         id="outlined-disabled"
                         multiline

@@ -37,7 +37,7 @@ function HomePage() {
 					Recipe recommendation
 				</div>
 				<div id="RecipeOfTheDay-panel">
-					<Link to= "/RecipeLibraryWebapp/ViewRecipe">
+					<Link to= {`/RecipeLibraryWebapp/ViewRecipe/${recommdedRecipeState.name}/${recommdedRecipeState.username}`}>
 						<h1>{recommdedRecipeState.name}</h1><br/>
 						<p>By {recommdedRecipeState.username}</p>
 					</Link>
