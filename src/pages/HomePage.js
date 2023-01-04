@@ -28,7 +28,7 @@ function HomePage() {
 		<React.Fragment>
 			<div className="NewRecipe">
 
-				<Link to= "/RecipeLibraryWebapp/CreateRecipe">
+				<Link to= "/CreateRecipe">
 					<button className='CreateRecipeBtn' disabled={!username}>Create New Recipe</button>
 				</Link>
 			</div>
@@ -37,7 +37,7 @@ function HomePage() {
 					Recipe recommendation
 				</div>
 				<div id="RecipeOfTheDay-panel">
-					<Link to= {`/RecipeLibraryWebapp/ViewRecipe/${recommdedRecipeState.name}/${recommdedRecipeState.username}`}>
+					<Link to= {`ViewRecipe/${recommdedRecipeState.name}/${recommdedRecipeState.username}`}>
 						<h1>{recommdedRecipeState.name}</h1><br/>
 						<p>By {recommdedRecipeState.username}</p>
 					</Link>
@@ -51,8 +51,8 @@ function HomePage() {
 		<div className="HomePage">
 			<SearhSortBar outputSetter={setResults} />
 			<Routes>
-				<Route path="/ResultPage" element={<ResultPage results={searchResults} />} exact='True' />
-				<Route path="/" exact='True' element={homePageDisplays}  />
+				<Route path="/ResultPage" element={<ResultPage results={searchResults} />} />
+				<Route path="/*" element={homePageDisplays}  />
 			</Routes>			
 
 		</div>

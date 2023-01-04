@@ -17,7 +17,7 @@ function App() {
     <React.Fragment>
       <UpperBar />
       <Routes>
-        <Route path="/*" element={<HomePage/>} exact='True' />
+        <Route path="*" element={<HomePage/>} exact='True' />
         <Route path="/ViewRecipe/:recipeName/:userName" element={<ViewRecipe/>} exact='True' />
         <Route path="/CreateRecipe" element={<CreateRecipe/>} exact='True' />
       </Routes>
