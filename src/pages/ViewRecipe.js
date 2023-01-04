@@ -7,7 +7,7 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import ReactStars from "react-rating-stars-component";
 import { useState, useEffect } from 'react';
-import { rateRecipe, getRecipeByName } from "../firebase/database"
+import { rateRecipe, getRecipeByName, saveRecipe } from "../firebase/database"
 import { useParams } from "react-router-dom"
 import { useNavigate } from "react-router-dom";
 
@@ -69,14 +69,7 @@ function ViewRecipe() {
     }
 
     const handleSave = () => {
-        const fileData = JSON.stringify(recommdedRecipeState);
-        const blob = new Blob([fileData], { type: "text/plain" });
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement("a");
-        link.download = "user-info.json";
-        link.href = url;
-        link.click();
-        alert("Download success!")
+        saveRecipe(recommdedRecipeState)
     }
 
     const Tags = ['Tatsy', 'Chicken', 'Pizza', 'Noodle', 'CleanEating', 'HealthyFood', 'JustEatRealFood', 'VeganFood', 'HealthyFoodRecipes', 'HealthyFoodLover', 'Popcorn']
