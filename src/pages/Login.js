@@ -4,6 +4,7 @@ import logoImg from '../icons/logo.png';
 import React, { useState } from 'react';
 import { authenticate } from "../firebase/database"
 import { useNavigate } from 'react-router-dom';
+import { Link, Routes, Route } from 'react-router-dom';
 
 function Login() {
   const navigate = useNavigate()
@@ -26,7 +27,7 @@ function Login() {
         if (result[0]) {
           console.log(result);
           sessionStorage.setItem('username', result[1]);
-          navigate("/RecipeLibraryWebapp");
+          navigate('/RecipeLibraryWebapp');
         } else {
 
           seterrMsg("Wrong username or password !");
@@ -54,9 +55,8 @@ function Login() {
       </form>
       <div className='ActionButtonGroup'>
         <button onClick={handleSubmit}> Login </button>
-        <button onClick={()=> navigate("/RecipeLibraryWebapp/Register")}> Register </button>
+        <button onClick={()=> navigate("/Register")}> Register </button>
       </div>
-
       <div className={!errMsg ? 'LoginErrMsg.hidden' : 'LoginErrMsg'}>{errMsg}</div>
     </div>
   );

@@ -13,12 +13,12 @@ function UpperBar (props) {
 			sessionStorage.setItem('username', '');
 			window.location.href = '/RecipeLibraryWebapp';
 		}
-		else navigate('/RecipeLibraryWebapp/Login')
+		else navigate('Login')
 	}
 
 	return (
 		<div className='UpperBar'>
-			<Link to="/RecipeLibraryWebapp">
+			<Link to="">
 				<div className='UpperbarHomeButton'>
 					<img src={HomeIcon} alt='upperbarHomeIcon' />
 				</div>
