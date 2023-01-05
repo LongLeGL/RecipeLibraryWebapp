@@ -8,7 +8,8 @@ function ResultItem(props) {
 
             <Link to={props.Link}>
                 <h1>{props.Name}</h1>
-                <p>{props.Author}</p>
+                <p>By {props.Author}</p>
+                <p>Rating: {props.Rating}</p>
             </Link>
         </div>
     );

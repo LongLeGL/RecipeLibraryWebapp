@@ -2,7 +2,7 @@
     background-color: white;
     margin: auto;
     margin-top: 15px;
-    margin-bottom: 0;
+    margin-bottom: 0px;
     width: 42vw;
     border-color: var(--border_gray);
     border-radius: 4px;
@@ -60,4 +60,12 @@
     width: 30vw;
     height: 1.5em;
     font-weight: 200;
+}
+.SearchErrMsg{
+    font-size: 1em;
+    background-color: crimson;
+    width: fit-content;
+    margin: auto;
+    margin-top: 1em;
+    padding: 0.5em 1em;
 }
