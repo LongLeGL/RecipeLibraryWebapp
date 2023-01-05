@@ -152,8 +152,8 @@ function ViewRecipe() {
                             fullIcon={<i className="fa fa-star"></i>}
                             activeColor="#ffd700"
                         />
-                        <Stack spacing={2} direction="row">
-                            <Button onClick={handleSubmit} variant="outlined" >Submit rate</Button>
+                        <Stack spacing={10} direction="row">
+                            <Button onClick={handleSubmit} variant="outlined" style={{ margin: '0 2em' }} >Submit rating</Button>
                         </Stack>
                     </div>
                     <div>

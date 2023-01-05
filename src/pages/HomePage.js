@@ -5,6 +5,7 @@ import SearhSortBar from '../components/SearchSortBar';
 import ResultPage from './ResultPage.js'
 import { useState } from 'react';
 import { getRandomRecipe } from '../firebase/database';
+import ReactStars from "react-rating-stars-component";
 
 function HomePage() {
 	const username = sessionStorage.getItem('username');
@@ -40,6 +41,10 @@ function HomePage() {
 					<Link to= {`ViewRecipe/${recommdedRecipeState.name}/${recommdedRecipeState.username}`}>
 						<h1>{recommdedRecipeState.name}</h1><br/>
 						<p>By {recommdedRecipeState.username}</p>
+						<div style ={{display: 'flex', alignitem:'center'}} >
+							<p>Rating: {recommdedRecipeState.rating} </p>
+							<ReactStars count={1} size={15} color="#ffd700" className='ResultRateStars' />
+						</div>
 					</Link>
 				</div>
 			</div>
