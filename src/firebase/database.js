@@ -179,7 +179,7 @@ export async function getRecipe(recipeName="", recipeTags, sortBy = 1){
     recipeSnap.forEach(recipe => {
       searchRes.push(recipe.data())
     })
-    console.log(searchRes)  
+    console.log(searchRes)
   }
 
 
