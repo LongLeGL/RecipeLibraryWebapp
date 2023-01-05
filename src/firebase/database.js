@@ -184,7 +184,7 @@ export async function getRecipe(recipeName="", recipeTags, sortBy = 1){
 
 
   // Get the recipes that match the string input
-    if(recipeName != ""){
+  if(recipeName != ""){
     //console.log("recipe search key: ",recipeName)
     var searchIndex = new Index({
       charset: "latin:extra",
