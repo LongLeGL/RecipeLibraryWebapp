@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/RecipeLibraryWebapp/static/css/main.1b341a41.css",
-    "main.js": "/RecipeLibraryWebapp/static/js/main.dc29f33d.js",
-    "static/js/498.1a4af45f.chunk.js": "/RecipeLibraryWebapp/static/js/498.1a4af45f.chunk.js",
-    "static/js/703.cfa469a9.chunk.js": "/RecipeLibraryWebapp/static/js/703.cfa469a9.chunk.js",
-    "static/js/513.71378b54.chunk.js": "/RecipeLibraryWebapp/static/js/513.71378b54.chunk.js",
+    "main.css": "/RecipeLibraryWebapp/static/css/main.903d793a.css",
+    "main.js": "/RecipeLibraryWebapp/static/js/main.9b889b21.js",
+    "static/js/498.2e9ab7de.chunk.js": "/RecipeLibraryWebapp/static/js/498.2e9ab7de.chunk.js",
+    "static/js/703.3c15559f.chunk.js": "/RecipeLibraryWebapp/static/js/703.3c15559f.chunk.js",
+    "static/js/513.157fede8.chunk.js": "/RecipeLibraryWebapp/static/js/513.157fede8.chunk.js",
     "static/media/logo.png": "/RecipeLibraryWebapp/static/media/logo.c5a9968c8b2a06216e74.png",
     "index.html": "/RecipeLibraryWebapp/index.html",
     "static/media/home.svg": "/RecipeLibraryWebapp/static/media/home.d6e214db07cca646fa59851adebef8c1.svg",
-    "main.1b341a41.css.map": "/RecipeLibraryWebapp/static/css/main.1b341a41.css.map",
-    "main.dc29f33d.js.map": "/RecipeLibraryWebapp/static/js/main.dc29f33d.js.map",
-    "498.1a4af45f.chunk.js.map": "/RecipeLibraryWebapp/static/js/498.1a4af45f.chunk.js.map",
-    "703.cfa469a9.chunk.js.map": "/RecipeLibraryWebapp/static/js/703.cfa469a9.chunk.js.map",
-    "513.71378b54.chunk.js.map": "/RecipeLibraryWebapp/static/js/513.71378b54.chunk.js.map"
+    "main.903d793a.css.map": "/RecipeLibraryWebapp/static/css/main.903d793a.css.map",
+    "main.9b889b21.js.map": "/RecipeLibraryWebapp/static/js/main.9b889b21.js.map",
+    "498.2e9ab7de.chunk.js.map": "/RecipeLibraryWebapp/static/js/498.2e9ab7de.chunk.js.map",
+    "703.3c15559f.chunk.js.map": "/RecipeLibraryWebapp/static/js/703.3c15559f.chunk.js.map",
+    "513.157fede8.chunk.js.map": "/RecipeLibraryWebapp/static/js/513.157fede8.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1b341a41.css",
-    "static/js/main.dc29f33d.js"
+    "static/css/main.903d793a.css",
+    "static/js/main.9b889b21.js"
   ]
 }
