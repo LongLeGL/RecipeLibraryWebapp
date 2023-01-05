@@ -216,8 +216,8 @@ export async function getRecipe(recipeName="", recipeTags, sortBy = 1){
   }
   console.log(searchRes)
   return searchRes
-}
 
+}
 
 /////////////////////       update recipe rating     
 export async function rateRecipe(username, recipeName, rate) {
