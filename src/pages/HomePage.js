@@ -25,6 +25,19 @@ function HomePage() {
 		}
 	});
 
+	function getDateTime(UNIX_timestamp){
+		var a = new Date(UNIX_timestamp);
+		var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+		var year = a.getFullYear();
+		var month = months[a.getMonth()];
+		var date = a.getDate();
+		var hour = a.getHours();
+		var min = a.getMinutes();
+		var sec = a.getSeconds();
+		var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
+		return time;
+	}
+
 	const homePageDisplays =
 		<React.Fragment>
 			<div className="NewRecipe">
@@ -41,10 +54,11 @@ function HomePage() {
 					<Link to= {`ViewRecipe/${recommdedRecipeState.name}/${recommdedRecipeState.username}`}>
 						<h1>{recommdedRecipeState.name}</h1><br/>
 						<p>By {recommdedRecipeState.username}</p>
-						<div style ={{display: 'flex', alignitem:'center'}} >
+						<div style ={{display: 'flex', alignitem:'center', paddingTop:'0.5em', paddingBottom:'0.3em'}} >
 							<p>Rating: {recommdedRecipeState.rating} </p>
 							<ReactStars count={1} size={15} color="#ffd700" className='ResultRateStars' />
 						</div>
+						<span className='CreatedTimeDisplay'>{getDateTime(recommdedRecipeState.createdTime)}</span>
 					</Link>
 				</div>
 			</div>

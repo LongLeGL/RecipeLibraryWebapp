@@ -71,3 +71,9 @@
     margin-top: 2em;
     padding: 0.5em 1em;
 }
+
+.CreatedTimeDisplay{
+    color: var(--text_gray);
+    font-size: 0.9em;
+    padding-top: 0.5em;
+}

@@ -6,9 +6,22 @@ import ResultItem from '../components/ResultItem';
 import ReactStars from "react-rating-stars-component";
 import { ratingClasses } from '@mui/material';
 
-function HomePage({results}) {
+function ResultPage({results}) {
 	console.log(results);
-	
+
+	function getDateTime(UNIX_timestamp){
+		var a = new Date(UNIX_timestamp);
+		var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+		var year = a.getFullYear();
+		var month = months[a.getMonth()];
+		var date = a.getDate();
+		var hour = a.getHours();
+		var min = a.getMinutes();
+		var sec = a.getSeconds();
+		var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
+		return time;
+	}
+
 	return (
 		<div className = "ResultPage">
 			<div className='ResultsContainer'>
@@ -20,10 +33,11 @@ function HomePage({results}) {
 							<Link to= {`/ViewRecipe/${item.name}/${item.username}`}>
 								<h1>{item.name}</h1><br/>
 								<p>By: {item.username}</p>
-								<div style ={{display: 'flex', alignitem:'center'}} >
+								<div style ={{display: 'flex', alignitem:'center', paddingTop:'0.5em', paddingBottom:'0.3em'}} >
 									<p>Rating: {item.rating} </p>
 									<ReactStars count={1} size={15} color="#ffd700" className='ResultRateStars' />
 								</div>
+								<span className='CreatedTimeDisplay'>{getDateTime(item.createdTime)}</span>
 							</Link>
 						</div>))}
 				</div>
@@ -34,4 +48,4 @@ function HomePage({results}) {
 	);
 }
 
-export default HomePage;
+export default ResultPage;
