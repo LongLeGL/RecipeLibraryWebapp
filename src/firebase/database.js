@@ -205,12 +205,10 @@ export async function getRecipe(recipeName = "", recipeTags, sortBy = 1) {
       searchResIdx += 1
     }
     console.log(returnRecipes)
-    return returnRecipes
+    searchRes=returnRecipes
   }
-  else {
-    console.log("Seach result here: ", searchRes)
-    return searchRes
-  }
+
+  return searchRes
 }
 
 
