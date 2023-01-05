@@ -188,7 +188,7 @@ export async function getRecipe(recipeName = "", recipeTags, sortBy = 1) {
     for (const i of searchRes) {
       let recipeInfo = i.name
       recipeInfo += i.ingredients
-      console.log(recipeInfo)
+      // console.log(recipeInfo)
       searchIndex.add(autoInc, recipeInfo)
       autoInc += 1;
     }
