@@ -154,7 +154,7 @@ export async function getRandomRecipe() {
 
 
 /////////////////////       search recipe     |     return an object array contains recipes as js object matched the tags
-export async function getRecipe(recipeName="", recipeTags, sortBy = 1) {
+export async function getRecipe(recipeName="", recipeTags, sortBy = 1){
   let Order = sortBy ? 'createdTime' : 'rating'
   const searchOrder = query(recipeCol, orderBy(Order))
   const recipeSnap = await getDocs(searchOrder)
@@ -165,7 +165,7 @@ export async function getRecipe(recipeName="", recipeTags, sortBy = 1) {
     recipeSnap.forEach(recipe => {
       for(const i of recipeTags){
         if(recipe.data().tags.includes(i)){
-          if(i===recipeTags[recipeTags.length - 1]){
+          if(i==recipeTags[recipeTags.length - 1]){
             searchRes.push(recipe.data())
           }
         }
@@ -184,7 +184,7 @@ export async function getRecipe(recipeName="", recipeTags, sortBy = 1) {
 
 
   // Get the recipes that match the string input
-    if(recipeName !== ""){
+    if(recipeName != ""){
     //console.log("recipe search key: ",recipeName)
     var searchIndex = new Index({
       charset: "latin:extra",
@@ -201,7 +201,7 @@ export async function getRecipe(recipeName="", recipeTags, sortBy = 1) {
       autoInc+=1;
     }
     let matchedRecipe = searchIndex.search(recipeName)
-    // console.log("Recipe index here: ", matchedRecipe)
+    //console.log("Recipe index here: ", matchedRecipe)
     // searchIndex.search return the index in searchRes that contains the input string
     // get recipes by index later
     let searchResIdx = 0
@@ -216,7 +216,6 @@ export async function getRecipe(recipeName="", recipeTags, sortBy = 1) {
   }
   console.log(searchRes)
   return searchRes
-
 }
 
 
