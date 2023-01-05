@@ -181,8 +181,8 @@ export async function getRecipe(recipeName="", recipeTags, sortBy = 1){
     })
     console.log(searchRes)
   }
-
   
+
   // Get the recipes that match the string input
   if(recipeName != ""){
     //console.log("recipe search key: ",recipeName)
@@ -201,7 +201,7 @@ export async function getRecipe(recipeName="", recipeTags, sortBy = 1){
       autoInc+=1;
     }
     let matchedRecipe = searchIndex.search(recipeName)
-    //console.log("Recipe index here: ", matchedRecipe)
+    //console.log("Recipe index here: ", matchedRecipe)   
     // searchIndex.search return the index in searchRes that contains the input string
     // get recipes by index later
     let searchResIdx = 0
@@ -216,6 +216,7 @@ export async function getRecipe(recipeName="", recipeTags, sortBy = 1){
   }
   console.log(searchRes)
   return searchRes
+
 }
 
 
