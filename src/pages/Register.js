@@ -27,7 +27,7 @@ function Register() {
             registerUser(email, password).then(result => {
                 if(result[0]) {
                     alert("Registration sucessful !");
-                    navigate("/");
+                    navigate("/RecipeLibraryWebapp");
                 }else{
                   seterrMsg("Username is already taken !");
                 }

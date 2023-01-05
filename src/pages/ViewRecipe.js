@@ -7,7 +7,7 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import ReactStars from "react-rating-stars-component";
 import { useState, useEffect } from 'react';
-import { rateRecipe, getRecipeByName } from "../firebase/database"
+import { rateRecipe, getRecipeByName, saveRecipe } from "../firebase/database"
 import { useParams } from "react-router-dom"
 import { useNavigate } from "react-router-dom";
 
@@ -69,31 +69,24 @@ function ViewRecipe() {
     }
 
     const handleSave = () => {
-        const fileData = JSON.stringify(recommdedRecipeState);
-        const blob = new Blob([fileData], { type: "text/plain" });
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement("a");
-        link.download = "user-info.json";
-        link.href = url;
-        link.click();
-        alert("Download success!")
+        saveRecipe(recommdedRecipeState)
     }
 
-    const Tags = ['Tatsy', 'Chicken', 'Pizza', 'Noodle', 'CleanEating', 'HealthyFood', 'JustEatRealFood', 'VeganFood', 'HealthyFoodRecipes', 'HealthyFoodLover', 'Popcorn']
+    const Tags = ['BreakFast', 'MainMeal', 'LightMeal', 'Desert', 'CleanEating', 'HealthyFood', 'Vegan', 'JunkFood', 'Snack']
     return (
         recommdedRecipeState && <div className='ViewRecipe'>
-            <div className='main-bodypart'>
+            <div className='main-bodypartv'>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <h3>Recipe Name: </h3>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                         {/* <TextField disabled
                             id="standard-disabled" label={recommdedRecipeState.name} variant="outlined" /> */}
                         <h1>{recommdedRecipeState.name}</h1>
                     </Box>
                 </div>
-                <h2>{recommdedRecipeState.username}</h2>
+                <h2>By {recommdedRecipeState.username}</h2>
                 <div style={{ paddingTop: '20px' }}>
                     <Autocomplete
+                        sx={{maxHeight: 60, overflow: 'auto', paddingTop: '10px', justifyContent: "right"}}
                         multiple
                         id="tags-readOnly"
                         options={Tags.map((option) => option)}
@@ -109,13 +102,16 @@ function ViewRecipe() {
                     <TextField
                         InputProps={{
                             inputProps: {
-                                style: { justifyContent: "right" },
+                                style: { justifyContent: "right", color: 'white' },
                             }
                         }}
-                        // id="outlined-multiline-static"
-                        // label="recommdedRecipeState.ingredientss"
+                        sx={{
+                            "& .MuiInputBase-input.Mui-disabled": {
+                              WebkitTextFillColor: "#000000",
+                          },
+                        }}
                         disabled
-                        // id="component-disabled"
+                        label="Ingredients"
                         id="outlined-disabled"
                         multiline
                         defaultValue={recommdedRecipeState.ingredients}
@@ -128,8 +124,12 @@ function ViewRecipe() {
                         InputProps={{
 
                         }}
-                        // id="outlined-multiline-static"
-                        // label="Intruction"
+                        sx={{
+                            "& .MuiInputBase-input.Mui-disabled": {
+                              WebkitTextFillColor: "#000000",
+                          },
+                        }}
+                        label="Instructions"
                         disabled
                         id="outlined-disabled"
                         multiline
