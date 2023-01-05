@@ -55,7 +55,7 @@ function HomePage() {
 						<h1>{recommdedRecipeState.name}</h1><br/>
 						<p>By {recommdedRecipeState.username}</p>
 						<div style ={{display: 'flex', alignitem:'center', paddingTop:'0.5em', paddingBottom:'0.3em'}} >
-							<p>Rating: {recommdedRecipeState.rating} </p>
+							<p>Rating: {recommdedRecipeState.rating?.toFixed(1)} </p>
 							<ReactStars count={1} size={15} color="#ffd700" className='ResultRateStars' />
 						</div>
 						<span className='CreatedTimeDisplay'>{getDateTime(recommdedRecipeState.createdTime)}</span>
