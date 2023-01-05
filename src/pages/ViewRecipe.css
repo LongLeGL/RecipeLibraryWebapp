@@ -38,3 +38,7 @@
 textarea:disabled { 
     color: #000000;
 }
+
+.Item{
+    height: fit-content;
+}

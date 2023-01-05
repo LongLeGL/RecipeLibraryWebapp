@@ -12,7 +12,7 @@ function HomePage({results}) {
 	return (
 		<div className = "ResultPage">
 			<div className='ResultsContainer'>
-				{(!results[0]) ? <div className="NoResultFound">No result found</div> : null}
+				{(!results[0]) ? <div className="NoResultFound">No results found</div> : null}
 				{/* display result here */}
 				<div className="ResultListItem">
 					{results.map((item) => (
@@ -20,12 +20,10 @@ function HomePage({results}) {
 							<Link to= {`/ViewRecipe/${item.name}/${item.username}`}>
 								<h1>{item.name}</h1><br/>
 								<p>By: {item.username}</p>
-								<p style ={{display: 'flex'}}>Rating: {item.rating}   <ReactStars
-                           			count={1}
-									size={15}
-                            		color="#ffd700"
-									/>
-								</p>
+								<div style ={{display: 'flex', alignitem:'center'}} >
+									<p>Rating: {item.rating} </p>
+									<ReactStars count={1} size={15} color="#ffd700" className='ResultRateStars' />
+								</div>
 							</Link>
 						</div>))}
 				</div>
