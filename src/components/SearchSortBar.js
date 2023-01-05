@@ -25,7 +25,7 @@ function SearhSortBar({outputSetter}) {
         const result = await getRecipe(key, recipeTags, sortBy)  
         return result;
     }
-    const Tags = ['Tatsy', 'Chicken', 'Pizza', 'Noodle', 'CleanEating', 'HealthyFood', 'JustEatRealFood', 'VeganFood', 'HealthyFoodRecipes', 'HealthyFoodLover', 'Popcorn']
+    const Tags = ['BreakFast', 'MainMeal', 'LightMeal', 'Desert', 'CleanEating', 'HealthyFood', 'Vegan', 'JunkFood', 'Snack']
     
     function handleSearchSubmit(e){
         //query results based on keywords, sort option, tags, save all into gotResults variable
@@ -34,21 +34,12 @@ function SearhSortBar({outputSetter}) {
         if(!key) seterrMsg("Recipe Name or Ingredients Required!")
         else if(!sort) seterrMsg("Please choose Order option!")
         else{
-            
             recipeName(key, recipeTags, sortBy).then(result => {
-                if(result[0]){
-                    console.log(result);
-                    outputSetter(result);
-                    navigate("/ResultPage");
-                }
-                else{
-                    seterrMsg("No matched Recipe, please search again!");
-                }
+                console.log(result);
+                outputSetter(result);
+                navigate("/ResultPage"); 
             })
-            
         }
-        
-        
     }
     
     return ( 
@@ -96,6 +87,7 @@ function SearhSortBar({outputSetter}) {
                 />
              
             </div>
+            <div className={!errMsg ? 'SearchErrMsg.hidden' : 'SearchErrMsg'}>{errMsg}</div>
         </div>
     );
 }

@@ -102,7 +102,7 @@ export async function userCreateRecipe(recipeObj, username) {
   let created = false
   if (!ownRecipeSnap.empty) {
     ownRecipeSnap.forEach(ownRec => {
-      if (ownRec.data().name == recipeObj.name) {
+      if (ownRec.data().name === recipeObj.name) {
         //console.log("U have already created a recipe with the same name!")   
         //return message here if existed
         created = true
@@ -179,7 +179,7 @@ export async function getRecipe(recipeName="", recipeTags, sortBy = 1) {
     recipeSnap.forEach(recipe => {
       searchRes.push(recipe.data())
     })
-    console.log(searchRes)
+    console.log(searchRes)  
   }
 
 

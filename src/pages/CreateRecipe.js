@@ -57,7 +57,7 @@ function CreateRecipe() {
                         multiple
                         id="tags-filled"
                         options={Tags.map((option) => option)}
-                        defaultValue={[Tags[0]]}
+                        // defaultValue={[Tags[0]]}
                         freeSolo
                         onChange={(event, value) => setTags(value)}
                         renderTags={(value, getTagProps) =>
