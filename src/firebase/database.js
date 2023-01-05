@@ -156,7 +156,7 @@ export async function getRandomRecipe() {
 /////////////////////       search recipe     |     return an object array contains recipes as js object matched the tags
 export async function getRecipe(recipeName="", recipeTags, sortBy = 1){
   let Order = sortBy ? 'createdTime' : 'rating'
-  const searchOrder = query(recipeCol, orderBy(Order))
+  const searchOrder = query(recipeCol, orderBy(Order,"desc"))
   const recipeSnap = await getDocs(searchOrder)
   let searchRes=[]
 
