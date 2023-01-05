@@ -20,6 +20,7 @@
     "flexsearch": "^0.7.31",
     "gridjs": "^5.1.0",
     "gridjs-react": "^5.1.0",
+    "jspdf": "^2.5.1",
     "leaflet": "^1.9.3",
     "leaflet-routing-machine": "^3.2.12",
     "moment": "^2.29.4",

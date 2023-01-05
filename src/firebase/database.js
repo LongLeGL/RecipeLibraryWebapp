@@ -205,12 +205,10 @@ export async function getRecipe(recipeName = "", recipeTags, sortBy = 1) {
       searchResIdx += 1
     }
     console.log(returnRecipes)
-    return returnRecipes
+    searchRes=returnRecipes
   }
-  else {
-    console.log("Seach result here: ", searchRes)
-    return searchRes
-  }
+
+  return searchRes
 }
 
 
@@ -239,5 +237,42 @@ export async function rateRecipe(username, recipeName, rate) {
   })
 }
 
+ 
+
+////////////////////        download recipe
+
+export async function saveRecipe(recipe){
+  let recName = recipe.name+ " by "+recipe.username+".pdf"
+  const {jsPDF} = require("jspdf")
+  const doc = new jsPDF({
+    orientation: "p", 
+    lineHeight: 1.7,
+  })
+  doc.setFont('Times')
+  let [x,y] = [10,10]
+  
+  doc.setFontSize(16).setFont(undefined,'bold')
+  doc.text(`${recipe.name}`, x, y,)
+  y+= 7;
+  doc.setFontSize(12).setFont(undefined,'normal')
+  doc.text("By ",x,y)
+  x+=7;
+  doc.text(`${recipe.username}`, x, y)
+  x-=7;
+  y+=10;
+  doc.setFont(undefined,'bold')
+  doc.text("Ingredients: ",x,y)
+  y+=7;
+  doc.setFontSize(10).setFont(undefined,'normal')
+  doc.text(`${recipe.ingredients}`, x, y)
+  y+=`${recipe.ingredients}`.split(/\r\n|\r|\n/).length*7;
+  doc.setFontSize(12).setFont(undefined,'bold')
+  doc.text("Steps: ",x,y)
+  doc.setFontSize(10).setFont(undefined,'normal')
+  y+=10;
+  var splitstep = doc.splitTextToSize(`${recipe.steps}`, 180);
+  doc.text(splitstep, x, y)
+  doc.save(recName)
+}
 
 
