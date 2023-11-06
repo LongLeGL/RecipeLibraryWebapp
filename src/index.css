@@ -1,3 +1,38 @@
+:root {
+  --bg_gray: #f2f2f2;
+  --border_gray: #D1D1D1;
+  --blue: #1900D5;
+  --text_gray: #7C7C7C;
+}
+
+* {
+  font-family: Roboto, Arial, Helvetica;
+  font-weight: 250;
+  margin: 0; padding: 0; border: none;
+}
+
+button {
+  background-color: blueviolet;
+  color: white;
+  border-radius: 6px;
+  border-style: none;
+  padding: 0.4em 1em;
+  cursor: pointer;
+}
+
+/* Remove default link format: */
+a {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  color:black; 
+  text-decoration:none; 
+  cursor:pointer;  
+}
+
+
 body {
   margin: 0;
   padding: 0 0;

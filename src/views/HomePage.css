@@ -1,8 +1,6 @@
 .HomePage{
-    padding-top: 10vh;
-    background-color: var(--bg_gray);
+    padding-top: 14vh;
     width: 100vw;
-    height: 90vh;
     display: flex;
     flex-direction: column;
 }

@@ -1,19 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+
 import './index.css';
-import App from './pages/App';
-import Login from './pages/Login';
-import {HashRouter, Routes, Route} from "react-router-dom";
-import Register from './pages/Register';
+
+import App from './views/App';
+import Login from './views/Login';
+import Register from './views/Register';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <HashRouter>
+  <BrowserRouter>
     <Routes>
-      <Route path="*" element={<App/>} exact='True' />
-      <Route path="Login" element={<Login/>} exact='True' />
-      <Route path="Register" element={<Register/>} exact='True' />
+      <Route path='2HandWarehouse'>
+        <Route index element={<App/>} />
+        <Route path="Login" element={<Login/>} exact='True' />
+        <Route path="Register" element={<Register/>} exact='True' />
+      </Route>
     </Routes>
-  </HashRouter>
+  </BrowserRouter>
 );
 

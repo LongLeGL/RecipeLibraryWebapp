@@ -1,0 +1,95 @@
+.UpperBar {
+    width: 100vw;
+    height: 14vh;
+    background-color: white;
+    display: block;
+    justify-content: space-between;
+    align-items: center;
+    border-width: 1px;
+    border-color: var(--border_gray);
+    border-bottom-style: solid;
+    position: fixed;
+}
+
+#upperControlsBar{
+    height: 8vh;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.UpperbarHomeButton{
+    height: fit-content;
+    width: fit-content;
+    display: flex;
+    margin-top: 0.2em;
+    /* border: 2px var(--border_gray) solid; */
+}
+
+#logoRedCircle{
+    position: relative;
+    width: 6.8vh;
+    height: 6.8vh;
+    top: 0;
+    left: 0;
+    background-color: #e9672b;
+    border-radius: 25.86px/26px;
+}
+
+#upBar_Logo{
+    margin-top: 0px;
+    display: flex;
+}
+#logoNumber{
+    position: relative;
+    width: 30px;
+    height: 25px;
+    top: -5px;
+    left: 10px;
+    font-family: "Roboto-Bold", Helvetica;
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 42px;
+    letter-spacing: 1.1px;
+    line-height: 66px;
+    white-space: nowrap;
+}
+#logoText{
+    position: relative;
+    width: 30px;
+    height: 25px;
+    font-family: "Roboto-Bold", Helvetica;
+    font-weight: 500;
+    color: #000000;
+    font-size: 30px;
+    letter-spacing: 1.1px;
+    line-height: 7.5vh;
+    white-space: nowrap;
+}
+
+.BarLoginButton{
+    height: 5vh;
+    min-width: 8em;
+    width: fit-content;
+    max-width: 30em;
+    overflow:hidden;
+    background-color: white;
+    color: black;
+    border: 2.5px black solid;
+    border-radius: 20px;
+    font-size: 1.2em;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center; 
+    justify-content: center;
+    margin-right: 1em;
+}
+
+
+#navBar {
+    height: 3vh;
+    border-top: rgb(231, 220, 220) solid 1px;
+    display: flex;
+    gap: 1em;
+    padding-top: 0.4em;
+    padding-left: 8em;
+}
