@@ -1,10 +1,16 @@
 import './Register.css';
+import './global.css'
 import React, {useState} from 'react';
+import { accountRegister } from '../firebase/database';
 import { useNavigate } from 'react-router-dom';
 
 function Register() {
     const navigate = useNavigate()
 
+    const registerUser = async (nemail, npassword) => {
+        const result = await accountRegister(nemail, npassword)
+        return result;
+    }
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -13,8 +19,22 @@ function Register() {
 
     function submitRegister(){
         seterrMsg('');
-        console.log('registering...');
-    }
+        console.log(email, password);
+        if (!email) seterrMsg("Username or Email required !");
+        else if (!password) seterrMsg("Password required !");
+        else if (password !== passwordr) seterrMsg("Passwords don't match !");
+        else{
+            registerUser(email, password).then(result => {
+                if(result[0]) {
+                    alert("Registration sucessful !");
+                    navigate("/RecipeLibraryWebapp");
+                }else{
+                  seterrMsg("Username is already taken !");
+                }
+              })
+        }
+
+      }
 
     return (
         <div className='RegisterPage'>
