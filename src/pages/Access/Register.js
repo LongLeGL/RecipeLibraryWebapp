@@ -1,7 +1,7 @@
 import './Register.css';
-import './global.css'
+import '../global.css';
 import React, {useState} from 'react';
-import { accountRegister } from '../firebase/database';
+import { accountRegister } from '../../firebase/database';
 import { useNavigate } from 'react-router-dom';
 
 function Register() {

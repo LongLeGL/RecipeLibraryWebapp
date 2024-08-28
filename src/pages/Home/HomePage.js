@@ -1,10 +1,10 @@
 import './HomePage.css'
 import React from 'react';
 import { Link, Routes, Route } from 'react-router-dom';
-import SearhSortBar from '../components/SearchSortBar';
-import ResultPage from './ResultPage.js'
+import SearhSortBar from '../../components/SearchSortBar.js';
+import ResultPage from '../Search/ResultPage.js'
 import { useState } from 'react';
-import { getRandomRecipe } from '../firebase/database';
+import { getRandomRecipe } from '../../firebase/database.js';
 import ReactStars from "react-rating-stars-component";
 
 function HomePage() {

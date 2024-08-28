@@ -7,14 +7,12 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import ReactStars from "react-rating-stars-component";
 import { useState, useEffect } from 'react';
-import { rateRecipe, getRecipeByName, saveRecipe } from "../firebase/database"
+import { rateRecipe, getRecipeByName, saveRecipe } from "../../firebase/database"
 import { useParams } from "react-router-dom"
-import { useNavigate } from "react-router-dom";
 
 
 function ViewRecipe() {
 
-    const navigate = useNavigate();
     const [recommdedRecipeState, setrecommdedRecipeState] = useState(null);
 
     const { recipeName, userName } = useParams();

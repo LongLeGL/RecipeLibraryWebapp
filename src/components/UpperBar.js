@@ -6,14 +6,14 @@ import logoImg from '../icons/logo.png';
 import Tooltip from "@mui/material/Tooltip";
 
 function UpperBar (props) {
+	const navigate = useNavigate();
 	const username = sessionStorage.getItem('username');
-	const navigate = useNavigate()
 	function onclUpperBarUserBtn (){
 		if (username){
 			sessionStorage.setItem('username', '');
 			window.location.href = '/RecipeLibraryWebapp';
 		}
-		else navigate('Login')
+		else navigate('/RecipeLibraryWebapp/login')
 	}
 
 	return (
