@@ -1,7 +1,7 @@
 import './HomePage.css'
 import React from 'react';
 import { Link, Routes, Route } from 'react-router-dom';
-import SearhSortBar from '../../components/SearchSortBar.js';
+import SearhSortBar from '../../components/Inputs/SearchSortBar.js';
 import ResultPage from '../Search/ResultPage.js'
 import { useState } from 'react';
 import { getRandomRecipe } from '../../firebase/database.js';
@@ -41,8 +41,7 @@ function HomePage() {
 	const homePageDisplays =
 		<React.Fragment>
 			<div className="NewRecipe">
-
-				<Link to= "/CreateRecipe">
+				<Link to= "/RecipeLibraryWebapp/CreateRecipe">
 					<button className='CreateRecipeBtn' disabled={!username}>Create New Recipe</button>
 				</Link>
 			</div>

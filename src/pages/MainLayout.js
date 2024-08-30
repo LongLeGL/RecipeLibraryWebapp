@@ -1,4 +1,4 @@
-import UpperBar from "../components/UpperBar";
+import UpperBar from "../components/Layout/UpperBar";
 import HomePage from "./Home/HomePage";
 import ViewRecipe from "./ViewRecipe/ViewRecipe";
 import CreateRecipe from "./ViewRecipe/ViewRecipe";

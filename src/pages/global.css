@@ -1,54 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Merienda:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two&family=Open+Sans:wght@400;600&display=swap');
+
 :root {
-    --bg_gray: #f2f2f2;
-    --border_gray: #D1D1D1;
-    --blue: #1900D5;
-    --text_gray: #7C7C7C;
+    /* Displays */
+  --bg_light: #fff8e8;
+  --bg_gray: #f2f2f2;
+  --bg_cream: #f7eed3;
+  --bg_greenspring: #AAB396;
+  --border_gray: #d1d1d1;
+  --blue: #1900d5;
+  --text_gray: #708090;
+
+  /* States */      /* ns = Normal state; hs = hover/focus state; as = active state; ds = disabled state */
+  --blue_ns: #710EEB;   
+  --blue_hs: #9547F4;
+  --blue_as: #390776;
+
+  --black_ns: #000000;   
+  --black_hs: #464646;
+  --black_as: #171717;
 }
 
 * {
-    font-family: Roboto, Arial, Helvetica;
-    font-weight: 250;
-    margin: 0; padding: 0; border: none;
+  font-family: Roboto, Arial, Helvetica;
+  font-weight: 250;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: none;
 }
 
 button {
-    background-color: blueviolet;
-    color: white;
-    border-radius: 6px;
-    border-style: none;
-    padding: 0.4em 1em;
-    cursor: pointer;
+  background-color: blueviolet;
+  color: white;
+  border-radius: 6px;
+  border-style: none;
+  padding: 0.6em 1em;
+  cursor: pointer;
+  display: flex;
+  gap: 0.8em;
+  font-size: medium;
+  font-weight: 500;
 }
 tag {
-    background-color: rgb(43, 107, 226);
-    margin-right: 10px;
-    
-    color: white;
-    border-radius: 6px;
-    border-style: none;
-    padding: 0.3em 0.8em;
-    cursor: pointer;
-    
+  background-color: rgb(43, 107, 226);
+  margin-right: 10px;
+
+  color: white;
+  border-radius: 6px;
+  border-style: none;
+  padding: 0.3em 0.8em;
+  cursor: pointer;
 }
 recipeTitle {
-    background-color: white;
-    margin-bottom: 10px;
-    
-    color: black;
-    border-radius: 6px;
-    border-style: none;
-    padding: 0.3em 0.8em;
-    cursor: pointer;
+  background-color: white;
+  margin-bottom: 10px;
+
+  color: black;
+  border-radius: 6px;
+  border-style: none;
+  padding: 0.3em 0.8em;
+  cursor: pointer;
 }
 
 /* Remove default link format: */
 a {
-    color: black;
-    text-decoration: none;
+  color: black;
+  text-decoration: none;
 }
 
 a:hover {
-    color:black; 
-    text-decoration:none; 
-    cursor:pointer;  
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }

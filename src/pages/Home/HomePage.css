@@ -1,6 +1,6 @@
 .HomePage{
     padding-top: 10vh;
-    background-color: var(--bg_gray);
+    background-color: var(--bg_light);
     width: 100vw;
     height: 90vh;
     display: flex;

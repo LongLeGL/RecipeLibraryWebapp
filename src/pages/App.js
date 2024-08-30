@@ -3,7 +3,7 @@ import './global.css'
 import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import UpperBar from '../components/UpperBar';
+import UpperBar from '../components/Layout/UpperBar';
 import HomePage from './Home/HomePage';
 import CreateRecipe from './CreateRecipe/CreateRecipe';
 import ViewRecipe from './ViewRecipe/ViewRecipe';

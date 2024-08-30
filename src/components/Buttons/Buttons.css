@@ -1,0 +1,57 @@
+.customBtn{
+  background-color: black;
+  cursor: pointer;
+}
+
+
+/* Button variants: */
+.customBtn.text{
+  background-color: transparent;
+  font-weight: 500;
+  border-style: none;
+}
+
+.customBtn.filled{
+  border-style: none;
+}
+
+.customBtn.outlined{
+  background-color: transparent;
+  border: 2px solid;
+}
+
+
+/**** Button colors: ****/
+/* blue */
+.customBtn.blue{
+  background-color: var(--blue_ns);
+  color: white;
+}
+.customBtn.blue.outlined, .customBtn.blue.text{
+  background-color: transparent;
+  color: var(--blue_ns);
+  border-color: var(--blue_ns);
+}
+.customBtn.blue:hover{
+  background-color: var(--blue_hs);
+}
+.customBtn.blue:active{
+  background-color: var(--blue_as);
+}
+
+/* black */
+.customBtn.black{
+  background-color: var(--black_ns);
+  color: white;
+}
+.customBtn.black.outlined, .customBtn.black.text{
+  background-color: transparent;
+  color: var(--black_ns);
+  border-color: var(--black_ns);
+}
+.customBtn.black:hover{
+  background-color: var(--black_hs);
+}
+.customBtn.black:active{
+  background-color: var(--black_as);
+}

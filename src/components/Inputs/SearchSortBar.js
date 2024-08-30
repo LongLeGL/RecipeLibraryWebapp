@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Autocomplete from '@mui/material/Autocomplete';
 import Chip from '@mui/material/Chip';
 import TextField from '@mui/material/TextField';
-import { getRecipe } from "../firebase/database"
+import { getRecipe } from "../../firebase/database"
 import { useNavigate } from 'react-router-dom';
 
 function SearhSortBar({outputSetter}) {
