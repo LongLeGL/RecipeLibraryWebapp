@@ -9,6 +9,7 @@
   --bg_greenspring: #AAB396;
   --border_gray: #d1d1d1;
   --blue: #1900d5;
+  --darkpurple: #2A0F33;
   --text_gray: #708090;
 
   /* States */      /* ns = Normal state; hs = hover/focus state; as = active state; ds = disabled state */
@@ -19,6 +20,10 @@
   --black_ns: #000000;   
   --black_hs: #464646;
   --black_as: #171717;
+
+  --greenspring_ns: var(--bg_greenspring);   
+  --greenspring_hs: #B7BFA6;
+  --greenspring_as: #7D8963;
 }
 
 * {
@@ -28,6 +33,10 @@
   margin: 0;
   padding: 0;
   border: none;
+}
+
+input:-webkit-autofill{
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 
 button {

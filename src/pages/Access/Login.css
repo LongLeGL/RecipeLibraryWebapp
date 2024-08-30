@@ -6,7 +6,7 @@
     flex-direction: column;
 }
 
-.LoginPageTitle {
+.LoginPageLogo {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -27,40 +27,47 @@
     margin-top: 1em;
     display: flex;
     flex-direction: column;
-    background-color: white;
+    gap: 0.8em;
     width: 50vw;
-    height: 3em;
-    border-color: aliceblue;
     border-radius: 8px;
     border-width: 2px;
-    border-style: solid;
-    padding: 0.5rem 2rem 0.5rem 0.5rem
+    border-style: none;
 }
 
 .InputContainer label {
-    font-weight: 500;
+    font-weight: 600;
+    font-size: large;
 }
 
 .InputContainer input {
-    height: 5em;
-    border-style: none;
-    outline: none;
+    font-size: large;
+    border: 2px solid var(--border_gray);
+    border-radius: 5px;
+    background-color: white;
+    padding: 0.7em 1em;
 }
 
-.LoginPage > .ActionButtonGroup{
+.ActionButtonGroup{
     display: flex;
-    gap: 2em;
+    flex-direction: column;
+    margin-top: 1.5em;
+    gap: 1em;
     justify-content: center;
+    align-items: center;
 }
-.LoginPage > .ActionButtonGroup > button {
-    margin-top: 1em;
+.ActionButtonGroup > button {
     text-align: center;
     font-size: 1.2em;
     padding: 0.5em 1.5em;
     cursor: pointer;
-    background-color: var(--blue);
     border-radius: 6px;
     color: white;
+}
+
+.LoginPage #betweenActionBtnSpan{
+    font-size: larger;
+    color: var(--text_gray);
+    font-weight: 600;
 }
 
 .LoginErrMsg{

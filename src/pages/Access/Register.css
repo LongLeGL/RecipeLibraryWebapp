@@ -4,16 +4,21 @@
     background-color: var(--bg_gray);
     display: flex;
     flex-direction: column;
+}
+
+.RegisterPageLogo {
+    display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 5vh;
+    gap: .5em;
+    font-size: 2.3em;
+    font-weight: 800;
 }
 
 .RegisterPageTitle {
     display: flex;
-    align-items: center;
     justify-content: center;
-    gap: .5em;
-    padding-top: 10vh;
     font-size: 2.3em;
     font-weight: 800;
 }
@@ -21,34 +26,10 @@
 .RegisterPageForm {
     display: flex;
     flex-direction: column;
-    gap: 2em;
-    padding-top: 10vh;
+    margin-top: 0.4em;
+    gap: 0.5em;
 }
 
-.InputContainer {
-    margin: auto;
-    margin-top: 1em;
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    width: 50vw;
-    height: 3em;
-    border-color: aliceblue;
-    border-radius: 8px;
-    border-width: 2px;
-    border-style: solid;
-    padding: 0.5rem 2rem 0.5rem 0.5rem
-}
-
-.InputContainer label {
-    font-weight: 500;
-}
-
-.InputContainer input {
-    height: 5em;
-    border-style: none;
-    outline: none;
-}
 
 .RegisterPage > .RegisterSubmit {
     margin: auto;

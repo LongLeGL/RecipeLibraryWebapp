@@ -24,14 +24,17 @@
 .UpperBarTitle img {
   width: 3em;
 }
-.UpperBarTitle h1{
-	font-family: "Merienda", cursive;
+.siteTitle{
+  font-family: "Merienda", cursive;
 }
 
 #barSearchBox {
-	position: relative;
+	position: absolute;
   display: flex;
 	align-items: center;
+	/* Centering */
+	left: 50%;       
+  transform: translateX(-50%);
 }
 
 .searchIcon {

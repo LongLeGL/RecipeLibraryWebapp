@@ -1,4 +1,5 @@
 import React from "react";
+import { createContext } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./pages/App";
@@ -10,23 +11,30 @@ import ViewRecipe from "./pages/ViewRecipe/ViewRecipe";
 import CreateRecipe from "./pages/CreateRecipe/CreateRecipe";
 import MainLayout from "./pages/MainLayout";
 import NotFound from "./pages/NotFound/NotFound";
+import AuthProvider from "./hooks/AuthProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Routes>
-        <Route path="/RecipeLibraryWebapp" exact={true} element={<App />} >
-          <Route path="" element={<MainLayout/>}>
-            <Route path='' element={<HomePage/>} />
-            <Route path="ViewRecipe/:recipeName/:userName" element={<ViewRecipe/>} exact='True' />
-            <Route path="CreateRecipe" element={<CreateRecipe/>} />
+      <AuthProvider>
+        <Routes>
+          <Route path="/RecipeLibraryWebapp" exact={true} element={<App />}>
+            <Route path="" element={<MainLayout />}>
+              <Route path="" element={<HomePage />} />
+              <Route
+                path="ViewRecipe/:recipeName/:userName"
+                element={<ViewRecipe />}
+                exact="True"
+              />
+              <Route path="CreateRecipe" element={<CreateRecipe />} />
+            </Route>
+            <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
+            <Route path="*" element={<NotFound />} />
           </Route>
-          <Route path="login" element={<Login />} />
-          <Route path="register" element={<Register />} />
-          <Route path="*" element={<NotFound/>} /> 
-        </Route>
-      </Routes>
+        </Routes>
+      </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
