@@ -6,7 +6,7 @@ import { authenticate } from "../../firebase/database";
 import { useNavigate } from "react-router-dom";
 import { Link, Routes, Route } from "react-router-dom";
 import Button from "../../components/Buttons/Button";
-import { authenticateUser } from "../../firebase/firebase";
+import { authenticateUser, getUserInfoByEmail } from "../../firebase/firebase";
 import { useAuth } from "../../hooks/AuthProvider";
 
 function Login() {
@@ -24,15 +24,19 @@ function Login() {
     else if (!password) seterrMsg("Password required !");
     else {
       // Finish frontend checking
+      let processedEmail = emailRegex.test(email) ? email : email + "@recipelib.com";
       authenticateUser(
-        emailRegex.test(email) ? email : email + "@recipelib.com",
+        processedEmail,
         password
       )
         .then((user) => {
           console.log("Login result:", user);
-          // set user
-          setToken(user);
-          navigate("/RecipeLibraryWebapp");
+          // Set user session
+          getUserInfoByEmail(processedEmail).then((usrData) => {
+            setToken(usrData.fname+" "+usrData.lname, user);
+            navigate("/RecipeLibraryWebapp");
+          })
+          .catch((err) => {})
         })
         .catch((err) => {
           if (err.message.includes("invalid-credential"))
@@ -84,7 +88,7 @@ function Login() {
           Create new account{" "}
         </Button>
       </div>
-      <div className={!errMsg ? "LoginErrMsg.hidden" : "LoginErrMsg"}>
+      <div className={!errMsg ? "LoginErrMsg noErr" : "LoginErrMsg"}>
         {errMsg}
       </div>
     </div>

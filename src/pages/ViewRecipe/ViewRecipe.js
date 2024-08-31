@@ -31,7 +31,8 @@ function ViewRecipe() {
         });
     }, [])
 
-    const user = sessionStorage.getItem('username');
+    const user = JSON.parse(localStorage.getItem('user'));
+    const username = user ? user.name : null;
 
     const [rate, setRate] = useState()
 
@@ -47,7 +48,7 @@ function ViewRecipe() {
             }
         })
         console.log(checkRated);
-        if (!user) {
+        if (!username) {
             alert("Please login before rate!")
         } else {
             if (checkRated) {

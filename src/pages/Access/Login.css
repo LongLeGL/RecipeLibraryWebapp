@@ -79,6 +79,12 @@
     padding: 0.5em 1em;
 }
 
+.LoginErrMsg.noErr{
+    /* visibility: hidden; */
+    background-color: transparent;
+    content: " ";
+}
+
 .CreatedTimeDisplay{
     color: var(--text_gray);
     font-size: 0.9em;

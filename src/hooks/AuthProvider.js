@@ -6,31 +6,31 @@ const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const authNavigate = useNavigate();
   const [userName, setUserName] = useState();
-  const [user, setUser] = useState();
+  const [auth, setAuth] = useState();
 
   useEffect(() => {
-    let storedUser = JSON.parse(sessionStorage.getItem('user'));
+    let storedUser = JSON.parse(localStorage.getItem('user'));
     if (storedUser){
-      setUserName(storedUser.email);
-      setUser(storedUser);
+      setUserName(storedUser.name);
+      setAuth(storedUser.auth);
     }
   }, []);
 
-  const setToken = (token) => {
-    setUserName(token.email);
-    setUser(token);
-    sessionStorage.setItem("user", JSON.stringify(token));
+  const setToken = (name, token) => {
+    setUserName(name);
+    setAuth(token);
+    localStorage.setItem("user", JSON.stringify({name: name, auth: token}));
   };
 
   const logOut = () => {
     setUserName(null);
-    setUser(null);
-    sessionStorage.removeItem("user");
+    setAuth(null);
+    localStorage.removeItem("user");
     authNavigate("/RecipeLibraryWebapp/login");
   };
 
   return (
-    <AuthContext.Provider value={{ userName, user, setToken, logOut }}>
+    <AuthContext.Provider value={{ userName, auth, setToken, logOut }}>
       {children}
     </AuthContext.Provider>
   );

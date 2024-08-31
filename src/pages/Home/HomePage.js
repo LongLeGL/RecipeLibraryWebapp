@@ -8,7 +8,8 @@ import { getRandomRecipe } from '../../firebase/database.js';
 import ReactStars from "react-rating-stars-component";
 
 function HomePage() {
-	const username = sessionStorage.getItem('username');
+	const user = JSON.parse(localStorage.getItem('user'));
+	const username = user ? user.name : null;
 	const [recommdedRecipeState, setrecommdedRecipeState] = useState({});
 
 	const getRecommendation = async () => {

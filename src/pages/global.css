@@ -26,6 +26,12 @@
   --greenspring_as: #7D8963;
 }
 
+#root{
+  height: 100vh;
+  width: 100vw;
+  overflow: auto;
+}
+
 * {
   font-family: Roboto, Arial, Helvetica;
   font-weight: 250;

@@ -14,6 +14,7 @@ import {
   updateDoc
 } from "firebase/firestore"
 import Authenticator from "./Authenticator";
+import Firestore from "./Firestore";
 
 const { Index } = require("flexsearch");
 
@@ -30,6 +31,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const authenticator = new Authenticator(app);
+const firestore = new Firestore(app);
 
 // Authentication
 export function registerUser(email, password){
@@ -38,6 +40,14 @@ export function registerUser(email, password){
 
 export function authenticateUser(email, password){
   return authenticator.authenticate(email, password);
+}
+
+export function addUserInfo(fname, lname, email){
+  firestore.addUser(fname, lname, email);
+}
+
+export function getUserInfoByEmail(email){
+  return firestore.getUserByEmail(email);
 }
 
 

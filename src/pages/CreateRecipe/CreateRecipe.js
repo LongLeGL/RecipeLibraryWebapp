@@ -13,7 +13,7 @@ import { userCreateRecipe } from "../../firebase/database"
 function CreateRecipe() {
     const navigate = useNavigate();
 
-    const user = sessionStorage.getItem('username');
+    const user = localStorage.getItem('username');
 
     const [valueName, setValueName] = useState("");
     const [tags, setTags] = useState([]);

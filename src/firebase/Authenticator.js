@@ -16,7 +16,7 @@ class Authenticator {
         .then((userCredential) => {
           // Signed up successfully
           const user = userCredential.user;
-          console.log("Firebase returned user:", user);
+          console.log("Firebase auth returned user:", user);
           resolve(user);
         })
         .catch((error) => {
