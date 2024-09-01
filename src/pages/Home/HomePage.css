@@ -21,25 +21,51 @@
 }
 
 .RecipeOfTheDay {
+    height: 50vh;
+    width: 40vw;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: space-between;
+    border-radius: 8px;
+    background-image: url('https://s3.envato.com/files/376558706/DSCF1946.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
 }
+
 .RecipeOfTheDay #RecipeOfTheDay-header{
-    font-size: 20px;
-    margin-bottom: 15px;
-    
+    border-radius: 8px 8px 0 0;
+    background-color: var(--bg_greenspring);
+    font-size: 24px;
+    font-weight: 700;
+    padding: 0.3em 1em;
+    color: aliceblue;
 }
+
+#rodPanelTitle{
+    display: flex;
+    gap: 0.3rem;
+}
+#rodPanelTitle h2{
+    font-family: "Raleway", sans-serif;
+    font-weight: 600;
+    color: rosybrown;
+}
+#RecipeOfTheDay-panel p{
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+    font-size: 1em;
+    color: var(--text-darkpurple);
+    margin-top: 0.3rem;
+}
+
 .RecipeOfTheDay #RecipeOfTheDay-panel{
-    background-color: white;
-    width: 40vw;
-    margin-bottom: 20px;    
-    border-color: var(--border_gray);
-    border-radius: 4px;
-    border-style: solid;    
+    background: linear-gradient(0deg, whitesmoke 45%, transparent 100%);
     display: flex;
     flex-direction: column;
-    padding: 1em 1em;
+    border-radius: 0 0 8px 8px;
+    /* box-shadow: 0px -42px 72px 12px whitesmoke; */
+    padding: 8em 1em 0.8em 1em;
 }
 
