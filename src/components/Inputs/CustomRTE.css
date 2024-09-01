@@ -1,0 +1,26 @@
+/* Rich text editor */
+.rsw-ce{
+  background-color: white;
+  padding: 0.8em 1em;
+  min-height: 8em;
+  max-height: 14em;
+  overflow-y: auto;
+}
+.rsw-toolbar .rsw-btn{
+  align-items: center;
+  justify-content: center;
+}
+
+.rsw-ce ul {
+  list-style: disc;
+  padding-left: 1.6em;
+}
+
+.rsw-ce ol {
+  list-style: decimal;
+  padding-left: 1.6em;
+}
+
+.rsw-ce b {
+  font-weight: bold;
+}

@@ -23,7 +23,7 @@ root.render(
             <Route path="" element={<MainLayout />}>
               <Route path="" element={<HomePage />} />
               <Route
-                path="ViewRecipe/:recipeName/:userName"
+                path="ViewRecipe/:recipeId"
                 element={<ViewRecipe />}
                 exact="True"
               />

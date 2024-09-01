@@ -1,21 +1,30 @@
 .CreateRecipe {
     background-color: var(--bg_gray);
     width: 100vw;
-    height: 90vh;
+    height: 100vh;
+    max-height: 100%;;
     display: flex;
     flex-direction: column;
     padding-top: 10vh;
     overflow-y: auto;
 }
 
-/* .CreateRecipe div {
-    align-items: center;
-    justify-content: center;
-} */
+
 .main-bodypart {
     padding-top: 0vh;
     margin: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
 }
+
+#CreateRecipe_title{
+    font-family: "Lobster Two", cursive;
+    font-size: 4em;
+    font-weight: 600;
+    margin: 0 auto;
+}
+
 
 .recipeName {
     align-items: center;
@@ -23,8 +32,49 @@
     width: 60vw;
 }
 
-.CreateRecipe div h3 {
-    padding-right: 16px;
+.CreateRecipe .InputLabel{
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+#CreateRecipe_actionBtns{
+    display: flex;
+    gap: 1em;
+    justify-content: end;
+}
+
+#CreateRecipeFileUpload{
+    display: none;
+}
+
+#CR_ImagePlaceHolder{
+    margin-top: 0.6em;
+    height: 50vh;
+    width: 40vw;
+    border-radius: 8px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+}
+
+#CR_ImageRemoveOverlay{
+    height: 100%;
+    width: 100%;
     align-items: center;
     justify-content: center;
+    opacity: 0;
+    cursor: pointer;
+}
+
+#CR_ImageRemoveOverlay:hover{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    line-height: 22vh;
+    opacity: 0.6;
+    cursor: pointer;
+    background-color: antiquewhite;
+    color: grey;
+    font-size: 4em;
+    border-radius: 8px;
 }

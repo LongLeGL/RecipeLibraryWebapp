@@ -50,6 +50,14 @@ export function getUserInfoByEmail(email){
   return firestore.getUserByEmail(email);
 }
 
+export function uploadRecipe(recipe){
+  return firestore.postRecipe(recipe);
+}
+
+export function getRecipeRecommendation(){
+  return firestore.getRecommendedRecipe();
+}
+
 
 // const db = getFirestore()
 // const userCol = collection(db, "users")

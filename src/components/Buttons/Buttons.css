@@ -1,6 +1,9 @@
 .customBtn{
   background-color: black;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
@@ -52,12 +55,18 @@
 .customBtn.black:hover{
   background-color: var(--black_hs);
 }
+.customBtn.black.outlined:hover{
+  background-color: aquamarine;
+}
 .customBtn.black.text:hover{
   background-color: transparent;
   text-decoration: underline;
 }
 .customBtn.black:active{
   background-color: var(--black_as);
+}
+.customBtn.black.outlined:active{
+  background-color: whitesmoke;
 }
 
 /* greenspring */
@@ -72,6 +81,9 @@
 }
 .customBtn.greenspring:hover{
   background-color: var(--greenspring_hs);
+}
+.customBtn.greenspring.outlined:hover{
+  background-color: aquamarine;
 }
 .customBtn.greenspring:active{
   background-color: var(--greenspring_as);

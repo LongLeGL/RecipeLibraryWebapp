@@ -1,56 +1,55 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import ReactStars from "react-rating-stars-component";
 import convertDateTime from "../../lib/convertDateTime";
+import { getRecipeRecommendation } from "../../firebase/firebase";
 
 function RecipeRecommendation() {
-  const [recommdedRecipeState, setrecommdedRecipeState] = useState({
-    name: "Fish Casserole",
-    rating: 4.5,
-    username: "Long Le",
-  });
+  const [recommdedRecipeState, setrecommdedRecipeState] = useState();
 
-  // const getRecommendation = async () => {
-  //   const result = await getRandomRecipe();
-  //   return result;
-  // };
-  // // var recommdedRecipe2;
-  // var recommdedRecipe = {};
-  // getRecommendation().then((result) => {
-  //   if (!recommdedRecipeState.name) {
-  //     recommdedRecipe = result;
-  //     console.log(recommdedRecipe.name);
-  //     setrecommdedRecipeState(recommdedRecipe);
-  //   }
-  // });
+  useEffect(() => {
+    getRecipeRecommendation()
+      .then((recipe) => {
+        console.log("Got recommendation:", recipe);
+        setrecommdedRecipeState(recipe);
+      })
+      .catch((e) => {
+        console.error("Err getting recommendation:", e);
+      });
+  }, []);
 
   return (
     <Link
-      to={`ViewRecipe/${recommdedRecipeState.name}/${recommdedRecipeState.username}`}
-      style={{ width: "fit-content", height: "fit-content", margin: "0 auto" }}
+      to={`ViewRecipe/${recommdedRecipeState?.id}`}
+      style={{
+        width: "fit-content",
+        height: "fit-content",
+        margin: "0 auto",
+      }}
     >
-      <div className="RecipeOfTheDay">
+      <div className="RecipeOfTheDay" style={{backgroundImage: `url(${recommdedRecipeState?.image})`}}>
         <div id="RecipeOfTheDay-header">Featured Recipe</div>
         <div id="RecipeOfTheDay-panel">
           <div id="rodPanelTitle">
-            <h2>{recommdedRecipeState.name}</h2>
+            <h2>
+              {recommdedRecipeState ? recommdedRecipeState?.name : "Loading..."}
+            </h2>
             <div
               style={{ display: "flex", alignItems: "center", gap: "0.1rem" }}
             >
-              (
-                <span>{recommdedRecipeState.rating?.toFixed(1)}</span>
-                <ReactStars
-                  count={1}
-                  size={16}
-                  color="#ffd700"
-                  className="ResultRateStars"
-                />
+              (<span>{recommdedRecipeState?.score.toFixed(1)}</span>
+              <ReactStars
+                count={1}
+                size={16}
+                color="#ffd700"
+                className="ResultRateStars"
+              />
               )
             </div>
           </div>
-          <p>By {recommdedRecipeState.username}</p>
+          <p>By {recommdedRecipeState?.author.name}</p>
           <span className="CreatedTimeDisplay">
-            {convertDateTime(recommdedRecipeState.createdTime)}
+            {convertDateTime(recommdedRecipeState?.createdTime)}
           </span>
         </div>
       </div>
