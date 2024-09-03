@@ -12,6 +12,7 @@
   border-color: var(--border_gray);
   border-bottom-style: solid;
   position: fixed;
+  z-index: 100;
 }
 
 .UpperBarTitle {

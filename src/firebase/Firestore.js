@@ -8,10 +8,10 @@ import {
   getDocs,
   query,
   where,
+  orderBy,
   limit,
 } from "firebase/firestore";
 import getRandomInt from "../lib/getRandomInt";
-import { orderBy, reject } from "lodash";
 
 class Firestore {
   constructor(app) {
@@ -107,9 +107,8 @@ class Firestore {
     let queryParams = [
       this.recipesRef,
       orderBy(order || "createdTime", "desc"),
+      limit(10)
     ];
-    // if (tags.length > 0)
-    //   queryParams.push(where("tags", "array-contains", tags[0]));
     const q = query(...queryParams);
 
     return new Promise((resolve, reject) => {
@@ -124,12 +123,13 @@ class Firestore {
         querySnapshot.forEach((doc) => {
           let docData = doc.data();
           if (
-            docData.name.includes(name) ||
-            docData.ingredients.includes(name)
+            docData.name.toLowerCase().includes(name.toLowerCase()) ||
+            docData.ingredients.includes(name.toLowerCase())
           ) {
             returnedRecipes.push({ ...docData, ...{ id: doc.id } });
           }
         });
+        console.log("Before filter:", returnedRecipes);
 
         // Perform more tags filtering as firestore does not support it
         let filteredRecipes = [];

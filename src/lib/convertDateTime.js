@@ -4,9 +4,9 @@ export default function convertDateTime(UNIX_timestamp){
   var year = a.getFullYear();
   var month = months[a.getMonth()];
   var date = a.getDate();
-  var hour = a.getHours();
-  var min = a.getMinutes();
-  var sec = a.getSeconds();
+  var hour = String(a.getHours()).padStart(2, '0');
+  var min = String(a.getMinutes()).padStart(2, '0');
+  var sec = String(a.getSeconds()).padStart(2, '0');
   var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
   return time;
 }

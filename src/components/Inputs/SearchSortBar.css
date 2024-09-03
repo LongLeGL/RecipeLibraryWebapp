@@ -17,6 +17,7 @@
 #resPageSearchBox {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 #searchBox_resultsPage {

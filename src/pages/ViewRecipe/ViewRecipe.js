@@ -1,13 +1,10 @@
 import React, { useRef } from "react";
 import "./ViewRecipe.css";
-import Autocomplete from "@mui/material/Autocomplete";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import Button from "../../components/Buttons/Button";
 import ReactStars from "react-rating-stars-component";
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { fetchRecipe } from "../../firebase/firebase";
 import convertDateTime from "../../lib/convertDateTime";
 import { submitRecipeRating } from "../../firebase/firebase";
@@ -17,11 +14,7 @@ import jsPDF from "jspdf";
 
 function ViewRecipe() {
   const { recipeId } = useParams();
-  const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
-  if (!user){
-    navigate("/RecipeLibraryWebapp");
-  }
 
   const [rate, setRate] = useState();
   const [userRated, setUserRated] = useState(false);
@@ -51,16 +44,17 @@ function ViewRecipe() {
     } else {
       // Call firestore rating function
       submitRecipeRating(user.auth.uid, rate, recipeId)
-      .then((newScore) => {
-        alert("Successfully submitted rating score: " + rate);
-        console.log("New average:", newScore);
-        setUserRated(true);
-        // window.location.reload();
-      })
-      .catch(e => {
-        console.error("Error rating recipe:", e)
-        alert("An error has occured, recipe rating failed !");
-      })
+        .then((newScore) => {
+          alert("Successfully submitted rating score: " + rate);
+          console.log("New average:", newScore);
+          setUserRated(true);
+          setRecipe({...recipe, score: newScore});
+          // window.location.reload();
+        })
+        .catch((e) => {
+          console.error("Error rating recipe:", e);
+          alert("An error has occured, recipe rating failed !");
+        });
     }
   };
 
@@ -93,7 +87,7 @@ function ViewRecipe() {
       x,
       y,
       width: 180,
-      windowWidth: 720,
+      windowWidth: 800,
     });
   }
 
@@ -139,7 +133,9 @@ function ViewRecipe() {
             }}
           >
             <div id="recipeView_rating">
-              <h3 className="recipeView_label">{userRated ? "Rating:" : "Rate the recipe:"}</h3>
+              <h3 className="recipeView_label">
+                {(userRated || !user) ? "Rating:" : "Rate the recipe:"}
+              </h3>
               <ReactStars
                 count={5}
                 onChange={(newVal) => {
@@ -147,15 +143,18 @@ function ViewRecipe() {
                 }}
                 size={35}
                 isHalf={true}
-                value={userRated ? recipe.score : 0}
+                value={userRated || !user ? recipe.score : 0}
                 emptyIcon={<i className="far fa-star"></i>}
                 halfIcon={<i className="fa fa-star-half-alt"></i>}
                 fullIcon={<i className="fa fa-star"></i>}
                 activeColor="#ffd700"
+                edit={user && !userRated}
               />
-              <span className="recipeView_label">({recipe.score})</span>
+              <span className="recipeView_label">
+                {userRated || !user ? null : `(Current: ${recipe.score})`}
+              </span>
               <Stack spacing={10} direction="row">
-                {!userRated && (
+                {!userRated && user && (
                   <Button
                     onClick={handleSubmit}
                     variant="outlined"

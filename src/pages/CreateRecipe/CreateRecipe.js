@@ -14,6 +14,9 @@ function CreateRecipe() {
   const navigate = useNavigate();
 
   const user = JSON.parse(localStorage.getItem("user"));
+  if (!user){
+    window.location.href = "/RecipeLibraryWebapp";
+  }
 
   const [valueName, setValueName] = useState("");
   const [tags, setTags] = useState([]);
@@ -154,7 +157,7 @@ function CreateRecipe() {
             </label>
           </Button>
           <input
-            accept=".png, .jpeg, .jpg"
+            accept="image/*"
             id="CreateRecipeFileUpload"
             type="file"
             ref={fileInputRef}
