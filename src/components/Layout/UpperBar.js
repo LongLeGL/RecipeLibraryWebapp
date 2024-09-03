@@ -1,21 +1,30 @@
 import React from "react";
+import { useState } from "react";
 import "./UpperBar.css";
 import { Link, useNavigate } from "react-router-dom";
 import logoImg from "../../icons/logo.png";
 import { FaRegUser } from "react-icons/fa";
 import { CiSearch } from "react-icons/ci";
-
-import Tooltip from "@mui/material/Tooltip";
 import Button from "../Buttons/Button";
+
 import { useAuth } from "../../hooks/AuthProvider";
+import { searchRecipes } from "../../firebase/firebase";
 
 function UpperBar(props) {
+  const [search, setSearch] = useState("");
   const navigate = useNavigate();
   const { userName, logOut } = useAuth();
+
   function onclUpperBarUserBtn() {
     if (userName) {
       logOut();
     } else navigate("/RecipeLibraryWebapp/login");
+  }
+
+  function handleSearch() {
+    navigate(
+      `search?q=${search}&tags=${[]}&o=${"createdTime"}`
+    );
   }
 
   return (
@@ -27,10 +36,25 @@ function UpperBar(props) {
         </div>
       </Link>
 
-      <div id="barSearchBox">
-        <CiSearch className="searchIcon" size={20} />{" "}
-        <input type="text" id="searchBox_bar" placeholder="Search recipe" />
-      </div>
+      {!window.location.href.includes("search") &&
+        <div id="barSearchBox">
+          <CiSearch className="searchIcon" size={20} onClick={handleSearch} />{" "}
+          <input
+            type="text"
+            id="searchBox_bar"
+            placeholder="Search recipes"
+            value={search}
+            onChange={(e) => {
+              setSearch(e.currentTarget.value);
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleSearch();
+              }
+            }}
+          />
+        </div>
+      }
 
       {userName ? (
         <Button

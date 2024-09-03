@@ -9,6 +9,7 @@ import {
   limit,
 } from "firebase/firestore";
 import getRandomInt from "../lib/getRandomInt";
+import { orderBy } from "lodash";
 
 class Firestore {
   constructor(app) {
@@ -78,6 +79,51 @@ class Firestore {
           }
           iterator += 1;
         });
+      });
+    });
+  }
+
+  searchRecipes(name, tags, order) {
+    console.log(
+      `Querying firebase for: ${name} - ${
+        tags.length>0 ? tags.join(",") : "no tags"
+      } - ${order}`
+    );
+    const recipesRef = collection(this.db, "recipes");
+    let queryParams = [recipesRef, orderBy(order || "createdTime", "desc")];
+    // if (tags.length > 0)
+    //   queryParams.push(where("tags", "array-contains", tags[0]));
+    const q = query(...queryParams);
+
+    return new Promise((resolve, reject) => {
+      getDocs(q).then((querySnapshot) => {
+        if (querySnapshot.docs.length == 0) {
+          console.log(`No recipes found from firestore`);
+          resolve([]);
+        }
+
+        let returnedRecipes = [];
+        // Perform text search on the frontend (not supported by firestore)
+        querySnapshot.forEach((doc) => {
+          let docData = doc.data();
+          if (
+            docData.name.includes(name) ||
+            docData.ingredients.includes(name)
+          ) {
+            returnedRecipes.push({ ...docData, ...{ id: doc.id } });
+          }
+        });
+
+        // Perform more tags filtering as firestore does not support it
+        let filteredRecipes = []
+        if (tags.length > 0){
+          filteredRecipes = returnedRecipes.filter((recipe) => {
+            if (tags.every((tag) => recipe.tags.includes(tag))) return true;
+          });
+        }
+        else filteredRecipes = returnedRecipes;
+        console.log("Firestore filtered recipes:", filteredRecipes);
+        resolve(filteredRecipes);
       });
     });
   }

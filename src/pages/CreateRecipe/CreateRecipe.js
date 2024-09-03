@@ -45,10 +45,7 @@ function CreateRecipe() {
       const reader = new FileReader();
       reader.onloadend = () => {
         setBase64(reader.result);
-        // You can store reader.result (base64 string) to a database or any storage
       };
-
-      console.log("File encode:");
 
       let newRecipeObj = {
         name: valueName,
@@ -106,7 +103,6 @@ function CreateRecipe() {
             paddingTop: "10px",
           }}
           multiple
-          id="tags-filled"
           options={predefTags.map((option) => option)}
           // defaultValue={[Tags[0]]}
           freeSolo
@@ -114,10 +110,10 @@ function CreateRecipe() {
           renderTags={(value, getTagProps) =>
             value.map((option, index) => (
               <Chip
-                key={index}
                 variant="outlined"
                 label={option}
                 {...getTagProps({ index })}
+                key={index}
               />
             ))
           }

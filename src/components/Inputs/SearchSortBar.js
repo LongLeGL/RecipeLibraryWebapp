@@ -1,95 +1,116 @@
-import React, { useState } from 'react';
-import './SearchSortBar.css';
-import { Link } from 'react-router-dom';
-import Autocomplete from '@mui/material/Autocomplete';
-import Chip from '@mui/material/Chip';
-import TextField from '@mui/material/TextField';
-import { getRecipe } from "../../firebase/database"
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import "./SearchSortBar.css";
 
-function SearhSortBar({outputSetter}) {
-    const navigate = useNavigate()
-    const [key, setKey] = useState("");
-    const [sort, setSort] = useState("");
-    const [recipeTags, setRecipeTags] = useState([]);
-    const [errMsg, seterrMsg] = useState("");
+import { CiSearch } from "react-icons/ci";
+import Autocomplete from "@mui/material/Autocomplete";
+import Chip from "@mui/material/Chip";
+import TextField from "@mui/material/TextField";
+import { useNavigate } from "react-router-dom";
+import {predefTags} from "../../firebase/predefinedTags";
+import { searchRecipes } from "../../firebase/firebase";
 
-    
-    let sortBy;
-    if(sort === "time"){
-        sortBy = 1;
-    } else {
-        sortBy = 0;
-    }
-    const recipeName = async (key, recipeTags, sortBy) => {
-        const result = await getRecipe(key, recipeTags, sortBy)  
-        return result;
-    }
-    const Tags = ['BreakFast', 'MainMeal', 'LightMeal', 'Desert', 'CleanEating', 'HealthyFood', 'Vegan', 'JunkFood', 'Snack']
-    
-    function handleSearchSubmit(e){
-        //query results based on keywords, sort option, tags, save all into gotResults variable
-        e.preventDefault();
-        seterrMsg('');
-        if(!key) seterrMsg("Recipe Name or Ingredients Required!")
-        else if(!sort) seterrMsg("Please choose Order option!")
-        else{
-            recipeName(key, recipeTags, sortBy).then(result => {
-                console.log(result);
-                outputSetter(result);
-                navigate("/ResultPage"); 
-            })
-        }
-    }
-    
-    return ( 
-        <div className ="SearchSortBar">
-            <form action="" id="search-box">
-                <input type="text" id ="search-text" placeholder="Search..." onChange={(e) => setKey(e.target.value)}/>
-{/* Submit search requirements */}
-                {/* <Link to='/ResultPage'> */}
-                    <button id="search-btn" onClick={handleSearchSubmit}>Search</button>
-                {/* </Link> */}
-            </form>
+function SearchSortBar({ setRecipes, kw, tags, order }) {
+  const navigate = useNavigate();
+  const [key, setKey] = useState(kw);
+  const [recipeTags, setRecipeTags] = useState(tags);
+  const [sort, setSort] = useState(order);
+  const [errMsg, seterrMsg] = useState("");
 
-            <div id="Order">
-                <label id="lbl">Order by: </label>
-                <input type="radio" id="time" name="sort" value= "time" onChange={(e) => setSort(e.target.value)}/> Time 
-                <input type="radio" id="rating" name="sort" value= "rating" onChange={(e) => setSort(e.target.value)} /> Rating
-            </div>
-            <div id="SearchTag">
-                <label id="lbl">Tags: </label>
-                <Autocomplete
-                    multiple
-                    id="search-tags-filled"
-                    options={Tags.map((option) => option)}
-                    // defaultValue={[Tags[0]]}
-                    freeSolo
-                    renderTags={(value, getTagProps) =>
-                        value.map((option, index) => (
-                            <Chip variant="outlined" label={option} {...getTagProps({ index })} />
-                        ))
-                    }
-                    onChange={(event, value) => setRecipeTags(value)}
-                    renderInput={(params) => (
-                        <TextField
-                            {...params}
-                            // variant="filled"
-                            label=""
-                            placeholder="Add tags..."
-                        />
-                    )}
-                    
-                    sx={{ 
-                        width: '35vw' ,
-                    }}
-                    size="small"
-                />
-             
-            </div>
-            <div className={!errMsg ? 'SearchErrMsg.hidden' : 'SearchErrMsg'}>{errMsg}</div>
-        </div>
-    );
+  function handleSearchSubmit(e) {
+    //query results based on keywords, sort option, tags, save all into gotResults variable
+    e.preventDefault();
+    seterrMsg("");
+    if (!sort) seterrMsg("Please choose Order option!");
+    else {
+			window.location.href = `/RecipeLibraryWebapp/search?q=${key}&tags=${recipeTags}&o=${sort}`;
+			// navigate(
+			// 	`/RecipeLibraryWebapp/search?q=${key}&tags=${recipeTags}&o=${sort}`
+			// );
+    }
+  }
+
+  return (
+    <div className="SearchSortBar">
+      <div id="resPageSearchBox">
+        <CiSearch className="searchIcon" size={20} onClick={handleSearchSubmit} />{" "}
+        <input
+          type="text"
+          id="searchBox_resultsPage"
+          placeholder="Search by name or ingredient"
+          value={key}
+          onChange={(e) => {
+            setKey(e.currentTarget.value);
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              handleSearchSubmit(e);
+            }
+          }}
+					style={{display:"relative"}}
+        />
+      </div>
+
+      <div id="SSbarOrder">
+        <label id="lbl">Order by: </label>
+        <input
+          type="radio"
+          id="time"
+          name="sort"
+          value="createdTime"
+          onChange={(e) => setSort(e.target.value)}
+					checked={sort === "createdTime"}
+        />{" "}
+        Time
+        <input
+          type="radio"
+          id="rating"
+          name="sort"
+          value="score"
+          onChange={(e) => setSort(e.target.value)}
+					checked={sort === "score"}
+        />{" "}
+        Rating
+      </div>
+
+      <div id="SearchTag">
+        <Autocomplete
+          sx={{
+            maxHeight: 110,
+            overflowY: "auto",
+            overflowX: "hidden",
+						width: "100%",
+            maxWidth: "100%",
+          }}
+          multiple
+          options={predefTags.map((option) => option)}
+          defaultValue={tags}
+          freeSolo
+          onChange={(event, value) => setRecipeTags(value)}
+          renderTags={(value, getTagProps) =>
+            value.map((option, index) => (
+              <Chip
+                variant="outlined"
+                label={option}
+                {...getTagProps({ index })}
+                key={index}
+              />
+            ))
+          }
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              label="Tags"
+              placeholder="Search and select tags"
+              variant="standard"
+            />
+          )}
+        />
+      </div>
+      <div className={!errMsg ? "SearchErrMsg.hidden" : "SearchErrMsg"}>
+        {errMsg}
+      </div>
+    </div>
+  );
 }
 
-export default SearhSortBar;
+export default SearchSortBar;

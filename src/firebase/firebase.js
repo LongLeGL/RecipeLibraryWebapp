@@ -58,6 +58,10 @@ export function getRecipeRecommendation(){
   return firestore.getRecommendedRecipe();
 }
 
+export function searchRecipes(name, tags, order){
+  return firestore.searchRecipes(name, tags, order);
+}
+
 
 // const db = getFirestore()
 // const userCol = collection(db, "users")

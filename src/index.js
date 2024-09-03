@@ -8,6 +8,7 @@ import Login from "./pages/Access/Login";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/Home/HomePage";
 import ViewRecipe from "./pages/ViewRecipe/ViewRecipe";
+import ResultPage from "./pages/Search/ResultPage";
 import CreateRecipe from "./pages/CreateRecipe/CreateRecipe";
 import MainLayout from "./pages/MainLayout";
 import NotFound from "./pages/NotFound/NotFound";
@@ -22,6 +23,7 @@ root.render(
           <Route path="/RecipeLibraryWebapp" exact={true} element={<App />}>
             <Route path="" element={<MainLayout />}>
               <Route path="" element={<HomePage />} />
+              <Route path="search" element={<ResultPage />} />
               <Route
                 path="ViewRecipe/:recipeId"
                 element={<ViewRecipe />}

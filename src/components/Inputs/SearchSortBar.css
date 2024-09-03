@@ -1,71 +1,71 @@
-.SearchSortBar{
-    background-color: white;
-    margin: auto;
-    margin-top: 15px;
-    margin-bottom: 0px;
-    width: 42vw;
-    border-color: var(--border_gray);
-    border-radius: 4px;
-    border-style: solid;    
-    display: flex;
-    flex-direction: column;
-    padding: 0.6em 0.6em;   
+.SearchSortBar {
+  background-color: var(--bg_light);
+  margin: auto;
+  margin-top: 15px;
+  margin-bottom: 0px;
+  width: 45vw;
+  border-color: var(--border_gray);
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 2px;
+  display: flex;
+  padding: 1em 1.5em;
+  gap: 1em;
+  flex-direction: column;
 }
-#search-box{
-    width: 40vw;
-    height: 100%;
-    border: 1px var(--border_gray) solid;
-    border-radius: 5px;
-    margin-left: 0.5em;
+
+#resPageSearchBox {
+  display: flex;
+  align-items: center;
 }
-:placeholder-shown{
-    font-style: italic;
+
+#searchBox_resultsPage {
+  width: 100%;
+  background-color: white;
+  font-size: medium;
+  padding: 0.5em 1em 0.5em 2em;
+  border-radius: 20px;
+  border: 1px solid gray;
+  color: var(--text_gray);
 }
-#search-box #search-text{
-    font-weight: 200;
-    font-size: 1em;
-    width: 32.5vw;
-    outline: none;
-    padding: 0.4em 1em;
+
+
+#SSbarOrder {
+  /* margin-top: 13px;
+  margin-bottom: 13px;
+  margin-left: 0.5em; */
+  display: flex;
+  align-items: center;
+  gap: 0.3em; 
 }
-#search-box #search-btn{
-    width: 5.1vw;
-    height: 3em;
-    background-color: #C1839F;
+
+#lbl {
+  margin-right: 8px;
+  color: grey;
 }
-#Order{
-    margin-top: 13px;
-    margin-bottom: 13px;
-    margin-left: 0.5em;
-}
-#lbl{
-    margin-right: 6px;
-}
-#Order #rating{
-    margin-left: 5px;
-}
-#SearchTag{
-    margin-bottom: 10px;
-    margin-left: 0.5em;
-    display: flex;
-    gap: 0.5em;
-    width: 35vw;
-    align-items: center;
+
+#SearchTag {
+  /* margin: 0 5% 10px 5%; */
+  /* margin-bottom: 10px;
+  margin-left: 0.5em; */
+  display: flex;
+  gap: 0.5em;
+  width: 100%;
+  align-items: center;
 }
 
 #SearchTag #search-tag {
-    border: 1px var(--border_gray) solid;
-    border-radius: 5px;
-    outline:none;
-    width: 30vw;
-    height: 1.5em;
-    font-weight: 200;
+  border: 1px var(--border_gray) solid;
+  border-radius: 5px;
+  outline: none;
+  width: 30vw;
+  height: 1.5em;
+  font-weight: 200;
 }
-.SearchErrMsg{
-    font-size: 1em;
-    background-color: crimson;
-    width: fit-content;
-    margin: auto;
-    margin-top: 1em;
-    padding: 0.5em 1em;
+.SearchErrMsg {
+  font-size: 0.8em;
+  background-color: crimson;
+  width: fit-content;
+  margin: auto;
+  padding: 0.5em 1em;
 }

@@ -1,7 +1,7 @@
 .ResultPage{
     padding-top: 10vh;
     background-color: var(--bg_gray);
-    height: 90vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     overflow: auto;
@@ -12,7 +12,8 @@
 }
 .NoResultFound{
     text-align: center;
-    font-size:40px;
+    margin-top: 1.3em;
+    font-size: 40px;
     color: var(--text_gray) ;
 }
 /* .ResultListItem{
@@ -29,18 +30,35 @@
     padding: 1em 1em;
 
 } */
-.ResultListItem .Item{
-    
+.ResultListItem .Item a{
     width: 70vw;
     min-height: 14.5vh;
     height: fit-content;
     border: 2px var(--border_gray) solid;
     border-radius: 8px;
     margin: 1.5em auto;
-    padding: 0.5em 1em;
-    background-color: white;
+    background-color: var(--bg_light);
+    display: flex;
+    justify-content: space-between;
 }
 
 .ResultRateStars{
-    padding-bottom: 1em;
+    margin-bottom: 2em;
+}
+
+.ResultItemInfo{
+    padding: 1.5em 1.2em;
+    width: 70%;
+    /* background: linear-gradient(90deg, var(--bg_light) 45%, transparent 100%); */
+    background-color: var(--bg_light);
+    border-radius: 8px;
+}
+
+#ResultItemImage{
+    /* background-color: blue; */
+    flex-grow: 1;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;     
+    border-radius: 8px;
 }
