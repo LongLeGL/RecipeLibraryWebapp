@@ -19,6 +19,7 @@
     "flexsearch": "^0.7.43",
     "gridjs": "^6.2.0",
     "gridjs-react": "^6.1.1",
+    "html-react-parser": "^5.1.15",
     "jspdf": "^2.5.1",
     "lodash": "^4.17.21",
     "moment": "^2.30.1",

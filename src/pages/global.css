@@ -12,6 +12,7 @@
   --blue: #1900d5;
   --darkpurple: #2A0F33;
   --text_gray: #708090;
+  --text_darkgray: #3A3B3C;
 
   /* States */      /* ns = Normal state; hs = hover/focus state; as = active state; ds = disabled state */
   --blue_ns: #710EEB;   

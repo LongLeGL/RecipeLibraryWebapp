@@ -44,7 +44,7 @@ function ResultPage() {
           <div className="ResultListItem">
             {results.map((item, index) => (
               <div className="Item" key={index}>
-                <Link to={`/ViewRecipe/${item.id}`}>
+                <Link to={`/RecipeLibraryWebapp/ViewRecipe/${item.id}`}>
                   <div className="ResultItemInfo">
                     <h2>{item.name}</h2>
                     <br />

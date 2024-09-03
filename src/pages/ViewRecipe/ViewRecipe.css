@@ -1,42 +1,92 @@
 .ViewRecipe {
-    padding-top: 9vh;
-    background-color: var(--bg_gray);
-    width: 100vw;
-    height: 90vh;
-    display: flex;
-    flex-direction: column;
+  padding: 0 8vw;
+  background-color: var(--bg_gray);
+  width: 100vw;
+  max-width: 100%;
+  height: 100vh;
+  max-height: 100%;
+  overflow-y: auto;
 }
 
-.main-bodypartv {
-    padding-top: 0;
-    margin: 36px;
+#recipeView_bg{
+  background-color: var(--bg_light);
+  padding: 10vh 3.5vw 2vh 3.5vw;
+  box-shadow: 0px 5px 12px -3px rgba(0,0,0,0.75);
 }
 
-.main-bodypartv h2 {
-    text-align: center;
-    margin-top: 10px;
-    
-    /* font-family: 'Open Sans', sans-serif; */
-
+.recipeView_infos{
+  color: var(--bg_greenspring);
+  font-weight: 600;
 }
 
-.ViewRecipe div {
-    align-items: center;
-    justify-content: center;
+#recipeView_title {
+  font-family: 'Lobster Two', cursive;
+  font-size: 4em;
+  margin-bottom: 0.4em;
 }
 
-.ViewRecipe div h1 {
-    padding-right: 16px;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Lobster Two', cursive;
-    font-size: 3em;
+#recipeView_metadata{
+  display: flex;
+  gap: 0.7em;
+  margin-bottom: 0.3em;
+}
+.recipeView_label{
+  color: var(--text_darkgray);
+  font-weight: 600;
 }
 
-textarea:disabled { 
-    color: #000000;
+
+.recipeSectionTitle{
+  color: var(--text_darkgray);
+  font-weight: 600;
+  width: fit-content;
+  border-bottom: 3px solid var(--bg_greenspring);
+  margin-bottom: 0.6em;
 }
 
-.Item{
-    height: fit-content;
+#recipeImageIngredients{
+  margin: 1em 0;
+  display: flex;
+  gap: 1.8em;
+  
+}
+#recipeImageIngredients img{
+  border-radius: 4px;
+  max-width: 52%;
+  height: auto;
+  box-shadow: 7px 7px 8px -1px rgba(0,0,0,0.75);
+}
+
+
+#recipeView_ingredients{
+  background-color: var(--bg_light);
+}
+
+#recipeInstructions{
+  margin: 1em 0;
+}
+#recipeInstructions ol, ul{
+  padding-left: 2.4em;
+}
+
+#recipeView_rating{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap:0.5em;
+}
+#recipeView_rating h3{
+  line-height: 2em;
+}
+
+#recipeView_rating div{
+  padding-bottom: 0.25em;
+}
+
+#recipeDataStatus{
+  text-align: center;
+  padding-top: 10vh;
+  font-size: xx-large;
+  font-weight: 600;
+  color: gray;
 }
