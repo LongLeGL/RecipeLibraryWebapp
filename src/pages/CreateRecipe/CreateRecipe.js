@@ -7,7 +7,6 @@ import Button from ".././../components/Buttons/Button";
 import CustomRTE from "../../components/Inputs/CustomRTE";
 import { MdOutlineAddBox } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-import { userCreateRecipe } from "../../firebase/database";
 import { predefTags } from "../../firebase/predefinedTags";
 import { uploadRecipe } from "../../firebase/firebase";
 

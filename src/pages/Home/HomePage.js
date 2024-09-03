@@ -1,12 +1,6 @@
 import "./HomePage.css";
 import React from "react";
-import { Link, Routes, Route } from "react-router-dom";
-import SearhSortBar from "../../components/Inputs/SearchSortBar.js";
-import ResultPage from "../Search/ResultPage.js";
-import { useState } from "react";
-import { getRandomRecipe } from "../../firebase/database.js";
-import ReactStars from "react-rating-stars-component";
-import convertDateTime from "../../lib/convertDateTime.js";
+import { Link } from "react-router-dom";
 import RecipeRecommendation from "./RecipeRecommendation.js";
 import Button from "../../components/Buttons/Button.js";
 import { Tooltip } from "@mui/material";
