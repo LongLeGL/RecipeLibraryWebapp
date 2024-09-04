@@ -22,7 +22,10 @@ function SearchSortBar({ setRecipes, kw, tags, order }) {
     seterrMsg("");
     if (!sort) seterrMsg("Please choose Order option!");
     else {
-			window.location.href = `/RecipeLibraryWebapp#/search?q=${key}&tags=${recipeTags}&o=${sort}`;
+			// window.location.href = `/RecipeLibraryWebapp#/search?q=${key}&tags=${recipeTags}&o=${sort}`;
+      navigate(
+        `/search?q=${key}&tags=${recipeTags}&o=${sort}`
+      );
       navigate(0);
 			// navigate(
 			// 	`/RecipeLibraryWebapp/search?q=${key}&tags=${recipeTags}&o=${sort}`
