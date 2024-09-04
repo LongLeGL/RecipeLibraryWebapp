@@ -32,7 +32,7 @@ function Login() {
           // Set user session
           getUserInfoByEmail(processedEmail).then((usrData) => {
             setToken(usrData.fname+" "+usrData.lname, user);
-            navigate("/RecipeLibraryWebapp");
+            navigate("/");
           })
           .catch((err) => {})
         })
@@ -80,7 +80,7 @@ function Login() {
         <Button
           variant={"text"}
           color={"black"}
-          onClick={() => navigate("/RecipeLibraryWebapp/register")}
+          onClick={() => navigate("/register")}
         >
           {" "}
           Create new account{" "}

@@ -5,7 +5,7 @@ import "./index.css";
 import App from "./pages/App";
 import Register from "./pages/Access/Register";
 import Login from "./pages/Access/Login";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, HashRouter } from "react-router-dom";  // Deploying to gh-pages requires using hashrouter instead of browseRrouter
 import HomePage from "./pages/Home/HomePage";
 import ViewRecipe from "./pages/ViewRecipe/ViewRecipe";
 import ResultPage from "./pages/Search/ResultPage";
@@ -17,10 +17,10 @@ import AuthProvider from "./hooks/AuthProvider";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <HashRouter>
       <AuthProvider>
         <Routes>
-          <Route path="/RecipeLibraryWebapp" exact={true} element={<App />}>
+          <Route path="" element={<App />}>
             <Route path="" element={<MainLayout />}>
               <Route path="" element={<HomePage />} />
               <Route path="search" element={<ResultPage />} />
@@ -37,6 +37,6 @@ root.render(
           </Route>
         </Routes>
       </AuthProvider>
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>
 );

@@ -26,7 +26,7 @@ const AuthProvider = ({ children }) => {
     setUserName(null);
     setAuth(null);
     localStorage.removeItem("user");
-    authNavigate("/RecipeLibraryWebapp/login");
+    authNavigate("login");
   };
 
   return (

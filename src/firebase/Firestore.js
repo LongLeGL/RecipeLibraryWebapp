@@ -107,7 +107,7 @@ class Firestore {
     let queryParams = [
       this.recipesRef,
       orderBy(order || "createdTime", "desc"),
-      limit(10)
+      // limit(10)
     ];
     const q = query(...queryParams);
 

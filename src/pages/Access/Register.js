@@ -39,7 +39,7 @@ function Register() {
           addUserInfo(fname, lname, processedEmail);
           setToken(fname+" "+lname, res);
 
-          navigate("/RecipeLibraryWebapp");
+          navigate("/");
         })
         .catch((err) => {
           if (err.message.includes("email-already-in-use"))
@@ -117,7 +117,7 @@ function Register() {
         <Button
           variant={"text"}
           color={"black"}
-          onClick={() => navigate("/RecipeLibraryWebapp/login")}
+          onClick={() => navigate("/login")}
         >
           {" "}
           Have an account ? Log in{" "}

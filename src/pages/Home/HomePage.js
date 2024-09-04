@@ -13,7 +13,7 @@ function HomePage() {
     <div className="HomePage">
       <div className="NewRecipe">
         {username ? (
-          <Link to="/RecipeLibraryWebapp/CreateRecipe">
+          <Link to="/CreateRecipe">
             <Button
               className="CreateRecipeBtn"
               variant="filled"

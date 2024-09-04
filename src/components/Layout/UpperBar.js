@@ -18,7 +18,7 @@ function UpperBar(props) {
   function onclUpperBarUserBtn() {
     if (userName) {
       logOut();
-    } else navigate("/RecipeLibraryWebapp/login");
+    } else navigate("login");
   }
 
   function handleSearch() {

@@ -67,7 +67,7 @@ function CreateRecipe() {
       uploadRecipe(newRecipeObj)
         .then(() => {
           alert("Recipe successfully uploaded!");
-          navigate("/RecipeLibraryWebapp");
+          navigate("/");
           setValueName("");
           setIngredients("");
           setInstrucion("");
@@ -169,7 +169,7 @@ function CreateRecipe() {
 
           <div id="CreateRecipe_actionBtns">
             <Button
-              onClick={() => navigate("/RecipeLibraryWebapp")}
+              onClick={() => navigate("/")}
               variant="outlined"
               color="greenspring"
             >

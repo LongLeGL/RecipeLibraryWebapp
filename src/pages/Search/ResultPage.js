@@ -8,10 +8,10 @@ import ReactStars from "react-rating-stars-component";
 import convertDateTime from "../../lib/convertDateTime";
 
 function ResultPage() {
-  const queryParameters = new URLSearchParams(window.location.search);
+  const [queryParameters] = useSearchParams();
   const searchQuery = queryParameters.get("q");
   const tagsQuery =
-    queryParameters.get("tags") !== ""
+    queryParameters.get("tags") && queryParameters.get("tags") !== ""
       ? queryParameters.get("tags").split(",")
       : [];
   const orderQuery = queryParameters.get("o");
@@ -44,7 +44,7 @@ function ResultPage() {
           <div className="ResultListItem">
             {results.map((item, index) => (
               <div className="Item" key={index}>
-                <Link to={`/RecipeLibraryWebapp/ViewRecipe/${item.id}`}>
+                <Link to={`/ViewRecipe/${item.id}`}>
                   <div className="ResultItemInfo">
                     <h2>{item.name}</h2>
                     <br />
