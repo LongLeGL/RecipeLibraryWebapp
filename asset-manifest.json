@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/RecipeLibraryWebapp/static/css/main.52c4e4ed.css",
-    "main.js": "/RecipeLibraryWebapp/static/js/main.de74d3e6.js",
+    "main.js": "/RecipeLibraryWebapp/static/js/main.62486922.js",
     "static/js/239.058734cd.chunk.js": "/RecipeLibraryWebapp/static/js/239.058734cd.chunk.js",
     "static/js/213.bd19edf8.chunk.js": "/RecipeLibraryWebapp/static/js/213.bd19edf8.chunk.js",
     "static/js/553.ee3d8476.chunk.js": "/RecipeLibraryWebapp/static/js/553.ee3d8476.chunk.js",
     "static/media/logo.png": "/RecipeLibraryWebapp/static/media/logo.c5a9968c8b2a06216e74.png",
     "index.html": "/RecipeLibraryWebapp/index.html",
     "main.52c4e4ed.css.map": "/RecipeLibraryWebapp/static/css/main.52c4e4ed.css.map",
-    "main.de74d3e6.js.map": "/RecipeLibraryWebapp/static/js/main.de74d3e6.js.map",
+    "main.62486922.js.map": "/RecipeLibraryWebapp/static/js/main.62486922.js.map",
     "239.058734cd.chunk.js.map": "/RecipeLibraryWebapp/static/js/239.058734cd.chunk.js.map",
     "213.bd19edf8.chunk.js.map": "/RecipeLibraryWebapp/static/js/213.bd19edf8.chunk.js.map",
     "553.ee3d8476.chunk.js.map": "/RecipeLibraryWebapp/static/js/553.ee3d8476.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.52c4e4ed.css",
-    "static/js/main.de74d3e6.js"
+    "static/js/main.62486922.js"
   ]
 }
